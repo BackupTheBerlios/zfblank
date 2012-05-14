@@ -1,0 +1,3 @@
+    \param string|ZfBlank_DbTable_Abstract $table new table or table class name
+    (optional)
+    \return ZfBlank_DbTable_Abstract: items table

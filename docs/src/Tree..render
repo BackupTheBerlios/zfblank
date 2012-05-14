@@ -1,0 +1,12 @@
+    See ZfBlank_Tree class description subsection \ref renderers "Renderers" for
+    additional information.
+
+    Rendering is done by instantiating particular renderer passing options to
+    it if any, and then calling it's render() method.
+
+    \param string $type render type. Determines class of the used renderer.
+    Class name is retrieved from upercasing this parameter and then adding
+    it to the end of 'ZfBlank_Tree_Renderer_' string. So, if $type is 'dom', 
+    the renderer will be of class ZfBlank_Tree_Renderer_Dom
+    \param array $options options passed to renderer's constructor (optional)
+    \return mixed: data returned by renderer's render() method

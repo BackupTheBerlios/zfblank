@@ -1,0 +1,13 @@
+    The $config array is that is passed to parent
+    (i.e. **Zend_Db_Table_Row_Abstract**) constructor.
+
+    In addition,
+    'finishDataMap' option can be set to **true** or **false** to force
+    \ref datamap "data map" \ref autodatamap "automatical completion" or to
+    prohibit it regardless of what \ref $_finishDataMap property says to do.
+    
+    \param array|Zend_Config $config configuration options array (optional)
+    \see \ref datamap "Data Map"
+    \see **Zend_Db_Table_Row_Abstract**
+    \see **Zend_Db_Table_Abstract**
+    \return void

@@ -1,0 +1,27 @@
+<h2>Tree Editor Demo</h2>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+<p>
+Tree editor is interactive JavaScript editor for <a href="/docs/group__grp__tree.html">trees</a>.
+It uses jQuery and jQuery UI libraries.
+It's created by <a href="/docs/classZfBlank__View__Helper__TreeEditor.html">TreeEditor</a> view helper and backed by a controller providing AJAX actions for server-side editing purposes.
+</p>
+<p>
+This demo variant presents a tree of <a href="/news">news</a> categories.
+Its controller does not interact with database, so results will not be saved.
+Click on any tree node to see its edit buttons.
+For categories, there is only one informational field in a node, the "name" field.
+The editor requests data map at startup, so trees with different datasets are edited similarly.
+</p>
+<?php echo $this->treeEditor(
+    new ZfBlank_DbTable_Categories(array('name'=>'NewsCategories')), 
+    'cats',
+    '/tree-edit/field-names',
+    '/tree-edit/node-values',
+    '/tree-edit/edit',
+    '/tree-edit/add',
+    '/tree-edit/branch',
+    '/tree-edit/delete',
+    'name'
+) ?>
+

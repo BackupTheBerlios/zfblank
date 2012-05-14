@@ -1,0 +1,5 @@
+
+    Proxy to ZfBlank_ActiveRow_Abstract::columnName()
+    \param string $field field name
+    \see \ref datamap "Data Map"
+    \return string: column name

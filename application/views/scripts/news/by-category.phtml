@@ -1,0 +1,15 @@
+<p>News in category: <a href="/news/categories/"><?php echo $this->category->getName() ?></a></p>
+<?php foreach (($paginator = $this->paginateSelect($this->select->order('PubTimeStamp DESC'))) as $item): ?>
+<p>
+    <dl>
+        <dt><a href="/news/read/id/<?php echo $item->getId() ?>"><?php echo $item->getTitle() ?></a></dt>
+        <dd>
+            <?php echo $item->getAbstract()?>
+            <a href="/news/read/id/<?php echo $item->getId() ?>">More...</a><br/>
+            <span class="news_time"><?php echo $item->getTime() ?></span>
+        </dd>
+    <dl>
+<p>
+<?php endforeach ?>
+<p><strong>Pages:</strong> <?php echo $this->paginationControl($paginator, 'Sliding', 'pagination.phtml', array('url'=>'/news')) ?></p>
+

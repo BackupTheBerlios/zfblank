@@ -1,0 +1,13 @@
+<?php if (!$this->questions->count()): ?>
+<p>The category is empty. <a href="/admin/faq">Go back...</a></p>
+<?php else: ?>
+<table width="100%">
+<?php foreach ($this->questions as $question): ?>
+<tr>
+    <td><?php echo $question->getQuestion() ?></td>
+    <td><a href="/admin/faq/edit/id/<?php echo $question->getId() ?>">edit</a></td>
+    <td><a href="/admin/faq/delete/category/<?php echo $this->category ?>/id/<?php echo $question->getId() ?>">delete</a></td>
+</tr>
+<?php endforeach ?>
+</table>
+<?php endif ?>

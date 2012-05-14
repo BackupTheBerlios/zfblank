@@ -1,0 +1,5 @@
+    \ingroup grp_sitemenu
+
+    The script will be placed inside `<script>` tags.
+    \see ZfBlank_View_Helper_SiteMenu
+    \see ZfBlank_SiteMenu

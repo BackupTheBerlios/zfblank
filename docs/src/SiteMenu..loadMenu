@@ -1,0 +1,7 @@
+    To load complete menu into tree, so that toplevel menu items become
+    direct children of this item, item's id must be **null**.
+
+    \param ZfBlank_DbTable_SiteMenu $table load from different table (optional)
+    \param boolean $recursion if **true**, load complete tree;
+    if **false** load only immediate children. (optional)
+    \return $this

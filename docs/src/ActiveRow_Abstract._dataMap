@@ -1,0 +1,9 @@
+    \brief The data map. Associative array that maps physical database
+    column names to object properties names.
+
+    \see \ref datamap "Data Map"
+    \see _transformColumn()
+    \see __call()
+    \see __construct()
+    \see $_finishDataMap
+    \see ZfBlank_DbTable_Abstract

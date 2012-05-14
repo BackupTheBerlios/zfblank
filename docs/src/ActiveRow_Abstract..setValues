@@ -1,0 +1,11 @@
+
+    Elements of array $values are in form:
+    > _field name_ => _value_
+
+ *  The data is set by calling `set-` method for every given field
+    (see __call()).
+
+    \param array $values
+    \see datamap "Data Map"
+    \see accessmethods "Data Access Methods"
+    \return $this

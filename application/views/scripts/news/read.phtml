@@ -1,0 +1,25 @@
+<h2><?php echo $this->item->getTitle() ?></h2>
+<p class="news_time"><?php echo $this->item->getTime() ?></p>
+<p class="news_cat">
+    <b>Category:</b>
+    <a href="/news/by-category/id/<?php echo $this->item->getCategory() ?>"><?php echo $this->item->categoryName() ?></a>
+</p>
+<p class="news_tags">
+    <b>Tags:</b>
+<?php $tags = $this->item->tagsRowset() ; $lastIdx = $tags->count() - 1 ?>
+<?php foreach ($tags as $idx=>$tag): ?>
+    <a href="/news/by-tag/id/<?php echo $tag->getId() ?>"><?php echo $tag->getTitle() ?></a>
+    <?php if ($idx < $lastIdx): ?>, <?php endif ?>
+<?php endforeach ?>
+</p>
+<?php echo $this->item->getText() ?>
+<h4>Leave a Comment</h4>
+<?php echo $this->form ?>
+<h3>Comments</h3>
+<?php foreach (($paginator = $this->paginateSelect($this->comments)) as $comment): ?>
+<h4><?php echo ($title = $comment->getTitle()) ? $title : 'No Title' ?></h4>
+<p class="comment_author"><?php echo $comment->getAuthor() ?></p>
+<p class="comment_time"><?php echo $comment->getTime() ?></p>
+<p><?php echo $comment->getText() ?></p>
+<?php endforeach ?>
+<p><strong>Pages:</strong> <?php echo $this->paginationControl($paginator, 'Sliding', 'pagination.phtml', array('url'=>'/news/read/id/'.$this->item->getId())) ?></p>

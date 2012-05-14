@@ -1,0 +1,15 @@
+    \ingroup grp_tag
+
+    Table class is ZfBlank_DbTable_Tags.
+
+    \anchor datamap_tag
+
+    ### Data Map ###
+
+    Field Name|Column Name| Type      | Required | Description
+    --------- | --------- | --------- | -------- | --------------------------------------
+    \a id     | \c ID     | arbitrary | +        | Unique tag ID
+    \a title  | \c Name   | string    | +        | tag name (title)
+    \a weight | \c Weight | integer   | +        | tag weight
+
+    \see \ref modelsdatamap "Data Map in Models Note"

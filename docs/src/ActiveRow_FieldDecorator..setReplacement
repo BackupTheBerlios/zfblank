@@ -1,0 +1,5 @@
+    \note When this parameter is set (i.e. it is not **null**) field 
+    value will not be in output.
+    \param string $replacement
+    \see $_replacement
+    \return $this

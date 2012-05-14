@@ -1,0 +1,18 @@
+<h2>Feedback</h2>
+<?php echo $this->siteSubMenu('Feedback', new Admin_Model_DbTable_AdminMenu(), 'name') ?>
+<p>Displaying messages: <?php echo $this->msgstype ?>.</p>
+<?php $urltype = ($this->urltype ? '/type/' . $this->urltype : '') ?>
+<table width="100%">
+<thead><td>ID</td><td>Date/Time</td><td>User</td><td>Message</td><td><td></td><td></td></thead>
+<?php foreach (($paginator = $this->paginateSelect($this->select)) as $msg): ?>
+<tr>
+    <td><?php echo $msg->getId() ?></td>
+    <td><?php echo $msg->getTime() ?></td>
+    <td><?php echo $msg->getAuthor() ?></td>
+    <td><?php echo $msg->getMessage() ?></td>
+    <td><a href="/admin/feedback/answer/id/<?php echo $msg->getId() ?>">answer/edit</a></td>
+    <td><a href="/admin/feedback/delete/id/<?php echo $msg->getId() . $urltype ?>?page=<?php echo $paginator->getCurrentPageNumber() ?>">delete</a></td>
+</tr>
+<?php endforeach ?>
+</table>
+<p><strong>Pages:</strong> <?php echo $this->paginationControl($paginator, 'Sliding', 'pagination.phtml', array('url'=>'/admin/feedback/index' . $urltype )) ?> </p>

@@ -1,0 +1,4 @@
+    \ingroup grp_tree
+    The script will be placed inside `<script>` tags.
+    \see ZfBlank_View_Helper_RenderTree
+    \see ZfBlank_Tree

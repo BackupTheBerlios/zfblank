@@ -1,0 +1,17 @@
+    \ingroup grp_article
+    
+    Default row class is ZfBlank_Article.
+
+    This table class adds (optional) support of relation with a users table for
+    article authors. By default, the author simply is indicated by a string with
+    his/her
+    name. When \ref $_usersTable property is not **null** (as it can be set
+    in a subclass), getUsersTable()
+    method will return table object for users table and
+    ZfBlank_Article::authorName() will return name taken from that table.
+
+    Recommended DB schema (in MySql notation):
+
+    \include zfb.articles.sql
+
+    \see ZfBlank_DbTable_Users

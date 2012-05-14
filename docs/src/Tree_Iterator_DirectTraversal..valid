@@ -1,0 +1,5 @@
+    This method is to be called after rewind() or next() to check whether
+    the current position is valid
+
+    (Required by **Iterator** interface.)
+    \return boolean: **true** if valid; **false** otherwise

@@ -1,0 +1,17 @@
+    Renders menu composed of the given parent's children. If the parent is
+    **null**, renders toplevel menu.
+
+    \param string|integer $parent parent menu or **null**; 3rd parameter
+    determines interpretation of value of this parameter
+    \param ZfBlank_DbTable_SiteMenu $table DB table to read the menu from;
+    if not given, new instance of ZfBlank_DbTable_SiteMenu will be used
+    (optional)
+    \param string $method how to interpret 1st parameter identifying
+    the parent (the default is 'id') (optional):
+    - 'name': as menu name (title);
+    - 'link': as menu URL;
+    - 'id': as ID
+    \return **Zend_View_Helper_Navigation_Menu**: rendering result
+    \note returned instance of class **Zend_View_Helper_Navigation_Menu**
+    has `__toString()` special method and can be rendered simply by `echo`'ing
+    it.  By default it's rendered as unordered multi-level list with hyperlinks.

@@ -1,0 +1,4 @@
+    \param string|ZfBlank_ActiveRow_FieldDecorator $field field name
+    \see \ref datamap "Data Map"
+    \see $_fieldDecorators
+    \return ZfBlank_ActiveRow_FieldDecorator: loaded decorator.

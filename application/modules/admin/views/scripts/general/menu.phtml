@@ -1,0 +1,7 @@
+<h2>Site Menu Editor</h2>
+<div id="menu_editor">
+	<?php echo $this->siteMenu()   // creating the menu using ZfBlank_View_Helper_SiteMenu view helper ?>
+</div>
+<?php echo $this->menuEditor('#menu_editor', '/admin/general/menu-edit',
+'/admin/general/menu-add', '/admin/general/menu-submenu',
+'/admin/general/menu-delete') ?>

@@ -1,0 +1,6 @@
+    \param string $table table class; if not given, the default (see
+    ZfBlank_SiteMenu::$_table) will be used (optional)
+    \return **Zend_View_Helper_Navigation_Menu**: rendering result
+    \note returned instance of class **Zend_View_Helper_Navigation_Menu**
+    has `__toString()` special method and can be rendered simply by `echo`'ing
+    it.  By default it's rendered as unordered multi-level list with hyperlinks.

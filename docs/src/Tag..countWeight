@@ -1,0 +1,11 @@
+
+    To run this method the object must be a row connected to a table object
+    that is an instance of ZfBlank_DbTable_Tags or its subclass. The table
+    object must have correct association table name with column names set.
+
+    Writes obtained value to _weight_ data field.
+    \note This method does not saves the weight value to database. Use `save()`
+    method afterwards.
+    \see ZfBlank_DbTable_Tags::setAssocTableName()
+    \see ZfBlank_DbTable_Tags::setAssocTagColumn()
+    \return $this

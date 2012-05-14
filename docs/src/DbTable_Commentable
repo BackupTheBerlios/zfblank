@@ -1,0 +1,10 @@
+    \ingroup grp_commentable
+
+    Default row class is ZfBlank_Commentable.
+
+    Besides all inherited table features, this table keeps information about
+    comments related table. Relation between two tables is one-to-many
+    (one item -- many comments). Comments table class is
+    ZfBlank_DbTable_Comments or descendant.
+
+    Reference physical schema is the same as for ZfBlank_DbTable_Items.

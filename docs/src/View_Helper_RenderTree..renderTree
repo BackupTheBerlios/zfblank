@@ -1,0 +1,15 @@
+    The tree to render can be given two ways: as root node or as database
+    table that contains tree. If tree was not loaded on root node, it will be
+    loaded.
+    \note If table is set as tree parameter of this method, it always create
+    *empty* node to use it as root. If you hold the root node in the table,
+    load it by hand and and give it as a parameter.
+    \param ZfBlank_Tree|ZfBlank_DbTable_Abstract $tree tree root node or DB 
+    table containing tree
+    \param string $method similar to first argument of ZfBlank_Tree::render()
+    method used to determine right renderer
+    \param array $options options to pass to renderer's constructor
+    (optional)
+    \see ZfBlank_Tree::render()
+    \see ZfBlank_Tree_Renderer_*
+    \return mixed: result of rendering

@@ -1,0 +1,19 @@
+    \ingroup grp_faq
+
+    Table class is ZfBlank_DbTable_Faq.
+
+    \anchor datamap_faq
+
+    ### Data Map ###
+
+    Field Name  | Column Name   | Type      | Required | Description
+    ----------  | ------------- | --------- | -------- | ---------------------------------------
+    \a id       | \c ID         | arbitrary | +        | unique question ID
+    \a category | \c CategoryID | arbitrary | +/&ndash;| foreign key: ID of question category
+    \a question | \c Question   | string    |          | the question
+    \a answer   | \c Answer     | text      |          | answer to the question
+
+    Field _category_ is used by methods inherited from ZfBlank_Item.
+    It can be abandoned when categories are not used.
+
+    \see \ref modelsdatamap "Data Map in Models Note"

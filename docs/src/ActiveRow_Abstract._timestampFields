@@ -1,0 +1,5 @@
+    \brief Enumerates names of timestamp fields.
+    \see \ref timestampfield "Timestamp Fields"
+    \see datamap "Data Map"
+    \see __call()
+    \see timestampFields()

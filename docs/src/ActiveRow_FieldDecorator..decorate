@@ -1,0 +1,8 @@
+    Either $value parameter must be passed or row and field name must be
+    set (see setRow() and setFieldName()), otherwise exception will be thrown.
+
+    \param string $value value to decorate (optional)
+    \remark The parameter was introduced to avoid infinite recursion when
+    this method is called from ZfBlank_ActiveRow_Abstract::__call().
+    Nevertheless, it can be used at will, in other cases.
+    \return string: decorated value

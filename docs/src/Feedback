@@ -1,0 +1,21 @@
+    \ingroup grp_feedback
+
+    Table class is ZfBlank_DbTable_Feedback.
+    
+    \anchor datamap_feedback
+
+    ### Data Map ###
+
+    Field Name  | Column Name  | Type                  | Required | Description
+    ----------- | ------------ | --------------------- | -------- | --------------------------------------
+    \a id       | `ID`         | arbitrary             | +        | Unique id of the feedback message.
+    \a author   | `Author`     | string or arbitrary   | +/&ndash;| Author name or foreign key for user's ID
+    \a contact  | `Contact`    | string                |          | User contact information.
+    \a message  | `Message`    | string                |          | The feedback message itself.
+    \a reply    | `Reply`      | string                |          | Site admin reply to the message.
+    \a time     |`MsgTimeStamp`| Zend_Date -> integer  |          | Message timestamp. This is \ref timestampfield "timestamp field".
+
+    Method requiring _author_ field: authorName().
+
+    \see \ref modelsdatamap "Data Map in Models Note"
+    \see ZfBlank_DbTable_Users

@@ -1,0 +1,4 @@
+    \remark Required by **Zend_Tag_Taggable**. `setWeight()` method is normally
+    provided by ZfBlank_ActiveRow_Abstract::__call() 
+
+    \return mixed: tag weight

@@ -1,0 +1,10 @@
+    The array elements are in form *option* => *value*.
+
+    To retrieve all possible option names, consider the names of all the
+    methods in this class which begin with "set" (excluding this one) with
+    \c set- prefix cut and then first letter lowercased. And option values
+    will be values passed to those methods. For example: method `setTree()` 
+    &mdash;> option `tree`.
+
+    \param array $options options
+    \return $this

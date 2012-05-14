@@ -1,0 +1,14 @@
+    Using ZfBlank_ActiveRow_FieldDecorator instance as a parameter allows
+    the renderer to obtain data from currently processed tree node. You must
+    tell the name of a data field (from which data should be read) to the
+    decorator object using
+    \ref ZfBlank_ActiveRow_FieldDecorator::setFieldName() "setFieldName()"
+    method or 'fieldName' constructor option.
+    The renderer uses
+    \ref ZfBlank_ActiveRow_FieldDecorator::setRow() "setRow()" method to set
+    current node on each tree iteration step.
+    \param  string|ZfBlank_ActiveRow_FieldDecorator $valueSource item value
+    source
+    \note Usually you should use ZfBlank_ActiveRow_FieldDecorator instead of
+    string if you don't want to get tree of items containing the same string.
+    \return $this

@@ -1,0 +1,65 @@
+    \ingroup grp_tree
+
+    This renderer maps tree of type ZfBlank_Tree to plain text with special
+    markup designating beginning and end of items that represent tree nodes
+    and containers. Containers are of two types: global (or root) container 
+    and children containers. Global container's begin and end markers
+    are placed around entire text. Children container's begin and end markers
+    are placed around items that represent child nodes. And item's begin
+    and end markers are placed around item text and children container (if
+    an item has chilren). Here is exemplary schematic layout:
+
+    \verbatim
+    ROOT_CONTAINER_BEGIN
+        ITEM_BEGIN
+            1st item text
+            CONTAINER_BEGIN
+                ITEM_BEGIN
+                    1st item 1st child text
+                ITEM_END
+                ITEM_BEGIN
+                    1st item 2nd child text
+                    CONTAINER BEGIN
+                        ITEM_BEGIN
+                            1st item 2nd child 1st child text
+                        ITEM_END
+                        
+                        ...
+
+                    CONTAINER_END
+                ITEM_END
+                
+                ...
+
+            CONTAINER_END
+        ITEM_END
+        ITEM_BEGIN
+            2nd item text
+        ITEM_END
+
+        ...
+
+    ROOT_CONTAINER_END
+    \endverbatim
+
+    Note that the renderer doesn't produce neither indents nor linebreaks.
+    You must insert newlines (`\n`) by hand into markup strings if you need
+    ones. To clarify the purpose of this renderer, consider that it may be
+    used, for instance, to produce multi-level HTML lists. For that, set 
+    container begin marker to `<ul>`, container end marker to `</ul>`,
+    and item markers to `<li>` and `</li>`. If the root container markers
+    are not set (i.e. are **null**), they are copied from corresponding
+    children container markers.
+
+    The text for every item is copied from the value of particular data field
+    of corresponding tree node. You can set the name of this field. By default
+    it is 'name' (so the value is received by getName() node method).
+ 
+    A pattern can be used in item or children container begin markers, that
+    will be substituted by current node's ID (retrieved by node's getId()
+    method or iterator's key() method).
+    By default, the pattern is `%%`, but it can be changed. For example: 
+    item begin marker `<li id="node-%%">` for node with ID=123 will be
+    rendered as `<li id="node-123">`
+    
+    \see ZfBlank_Tree_Renderer_Interface

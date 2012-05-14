@@ -1,0 +1,27 @@
+    \ingroup grp_comment
+
+    Table class is ZfBlank_DbTable_Comments.
+
+    Comments leaved by site users. Comment can be attached to model presented by
+    ZfBlank_Commentable and its subclasses. 
+
+    \anchor datamap_comment
+
+    ### Data Map ###
+
+    Field Name | Column Name     |Type                 | Required | Description
+    ---------- | --------------- |---------------------| -------- | --------------------------------------
+    \a id      | \c ID           |arbitrary            | +        | Unique comment ID
+    \a item    | \c ItemID       |arbitrary            | +        | Foreign key: commented item ID
+    \a author  | \c Author       |string or arbitrary  | +/&ndash;| Author name or foreign key for user's ID
+    \a title   | \c Title        |string               |          | Comment title
+    \a text    | \c Body         |text                 |          | Comment text
+    \a parent  | \c ParentID     |same as of \a id     | +/&ndash;| parent ID (if comments are organized in tree)
+    \a offset  | \c ChildOffset  |integer              | +/&ndash;| offset among other children (0 = first) (if comments are organized in tree)
+    \a time    | \c PubTimeStamp |Zend_Date -> integer |          | Comment timestamp. This is \ref timestampfield "timestamp field".
+
+    Method requiring _author_ field: authorName().
+
+    Fields _parent_ and _offset_ are required by inherited ZfBlank_Tree methods.
+    They can be abandoned if comments are not hierarchical.
+

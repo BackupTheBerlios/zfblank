@@ -1,0 +1,34 @@
+    $sitemap = $siteMapTable->createRow()->loadTree();       // creating root node and loading tree from database
+
+    $renderer = new ZfBlank_Tree_Renderer_Dom (array(
+        'tree' => $sitemap,
+
+        'rootContainer' => 'ul',                         /* 'ul' is default tag, so this option is unnecessary */
+
+        'valueSource' => new ZfBlank_ActiveRow_FieldDecorator(array( 
+            'fieldName' => 'name'
+        )),
+
+        'childrenContainer' => array('ul',                   /* 'ul' is default. Here we add 'class' attribute */
+            'attributes' => array('class'=>'container'),     /* tag attribute class="container" */
+        ),
+
+        'nodeTag' => array('li',                                      /* 'li' is default tag name. This option here */
+            'attributes' => array(                                    /* is to create unique id for each item. */
+                'id' => new ZfBlank_ActiveRow_FieldDecorator(array(   
+                    'prefix' => 'page-',                              /* tag attribute id="page-ID" where */
+                    'fieldName' => 'id',                              /* ID is the node id */
+                ))
+            ),
+        ),
+
+        'valueContainer' => array('a',             
+            'attributes' => array(
+                'href'=> new ZfBlank_ActiveRow_FieldDecorator(array(
+                    'fieldName' => 'link'
+                ))
+            ),
+        ),
+    ));
+
+    $document = $renderer->render();

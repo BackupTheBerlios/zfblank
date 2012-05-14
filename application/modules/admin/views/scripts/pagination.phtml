@@ -1,0 +1,14 @@
+<?php if (isset($this->previous)): ?>
+<a href="<?php echo $this->url ?>?page=<?php echo $this->previous ?>">prev</a>
+<?php endif ?>
+<?php foreach ($this->pagesInRange as $page):
+    if ($page == $this->current):
+        echo $page . "\n";
+    else: ?>
+<a href="<?php echo $this->url ?>?page=<?php echo $page ?>"><?php echo $page ?></a>
+<?php endif;
+endforeach ?>
+<?php if (isset($this->next)): ?>
+<a href="<?php echo $this->url ?>?page=<?php echo $this->next ?>">next</a>
+<?php endif ?>
+

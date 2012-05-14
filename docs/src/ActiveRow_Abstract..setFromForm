@@ -1,0 +1,12 @@
+
+    The data is set by setValues() method. If $form argument is not given,
+    the form must be already installed by form() method,
+    otherwise an error will be caused. The form class must define
+    \ref ZfBlank_Form_Interface::exportValuesArray() "exportValuesArray()"
+    method that returns data to be set.
+
+    \param ZfBlank_Form $form the form to set data from (optional)
+    \see ZfBlank_Form_Interface::exportValuesArray()
+    \see setValues()
+    \see form()
+    \return $this

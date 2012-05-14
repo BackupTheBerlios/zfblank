@@ -1,0 +1,16 @@
+    Creates an iterator for the tree based upon this node. Iterator type is
+    that is used by default (see $_iteratorClass) or that has been set by
+    iteratorClass() method.
+
+    See ZfBlank_Tree class description subsection \ref iterators "Iterators"
+    for additional information.
+
+    (Required by PHP **IteratorAggregate** interface.)
+
+    \note Returned iterator is always pointed to the node calling this method.
+    If this is empty root node, it's probably better to call next() iterator
+    method before using it.
+    \see iteratorClass()
+    \see $_iteratorClass
+    \see **IteratorAggregate**
+    \return Iterator: iterator

@@ -1,0 +1,3 @@
+    \note getCategory() and setCategory() work with category IDs of categories
+    placed in associated categories table.
+    \return string: category name

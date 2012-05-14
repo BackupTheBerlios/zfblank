@@ -1,0 +1,32 @@
+    \ingroup grp_feed
+
+    Table class is ZfBlank_DbTable_Feed. 
+
+    Item of some feed, for example, news feed.
+    Can be categorized, tagged and commented. See parent classes.
+    Presents automatical generation of description (abstract) from body text 
+    to use in feeds.
+
+    \anchor datamap_feeditem
+
+    ### Data Map ###
+
+    Field Name   |  Column Name | Type                  | Required  | Description
+    ------------ | ------------ | --------------------- | --------- | --------------------------------------
+    \a id        | `ID`         | arbitrary             | +         | Unique comment ID
+    \a author    | `Author`     | string or arbitrary   | +/&ndash; | Author name or foreign key for user's ID (if relation with users table is on)
+    \a title     | `Title`      | string                |           | Article title
+    \a abstract  | `Abstract`   | string                | +/&ndash; | Article short description
+    \a text      | `Body`       | text                  | +/&ndash; | Article content
+    \a category  | `CategoryID` | arbitrary             | +/&ndash; | Foreign key: ID of article's category (if categories are used)
+    \a time      |`PubTimeStamp`| Zend_Date -> integer  |           | Publication timestamp. This is \ref timestampfield "timestamp field".
+
+    Method requiring _author_ field: authorName() (inherited from ZfBlank_Article).
+
+    Method requiring _text_ and _abstract_ fields: generateAbstract().
+
+    Field _category_ is used by methods inherited from ZfBlank_Item.
+    It can be abandoned when categories are not used.
+
+    \see \ref modelsdatamap "Data Map in Models Note"
+    \see ZfBlank_DbTable_Users

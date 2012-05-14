@@ -1,0 +1,18 @@
+    \ingroup grp_user
+    
+    Row class for ZfBlank_DbTable_Users table. Provides methods for user
+    registration and login.
+
+    \anchor datamap_user
+    
+    ### Data Map ###
+
+    Field Name   | Column Name | Type                 | Required | Description
+    ------------ | ----------- | -------------------- | -------- | --------------------------------------
+    \a id        | \c ID       | arbitrary            | +        | Unique user identificator
+    \a username  | \c UserName | string               | +        | User login name
+    \a password  | \c Password | string               | +        | User password
+    \a fullName  | \c FullName | string               |          | User full name
+    \a regDate   | \c RegDate  | Zend_Date -> integer | +        | When was registered. This is \ref timestampfield "timestamp field".
+
+    \see \ref modelsdatamap "Data Map in Models Note"

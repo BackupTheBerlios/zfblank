@@ -1,0 +1,4 @@
+    \ingroup grp_sitemenu
+    \see ZfBlank_SiteMenu
+    \see ZfBlank_DbTable_SiteMenu
+    \see **Zend_View_Helper_Navigation_Menu**

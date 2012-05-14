@@ -1,0 +1,11 @@
+    \ingroup grp_tree
+
+    This renderer converts a tree to an array of indented strings. Strings
+    are taken from one particular data field in each node (default field is
+    'name'). Indents can be added on left, right, or both sides of a string.
+    Number of indents corresponds the node's depth in tree. Root (or toplevel)
+    nodes make no indent. The default indent is tab symbol (\c "\t") but
+    it can be set to any symbol or string.
+
+    By default, the keys of resulting array are the same as the nodes' ID's.
+    Use \ref setIdKeys() "setIdKeys(\c false)" to have plain incremental keys.

@@ -1,0 +1,12 @@
+#copyright,#hosting {
+    margin-bottom: 10px;
+}
+    
+#hosting {
+    float: left;
+}
+
+#copyright {
+    float: right;
+    text-align: right;
+}

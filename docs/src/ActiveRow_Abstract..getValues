@@ -1,0 +1,9 @@
+
+    Returns an array, each element of which is in form
+    _field_name_ => _value_
+
+ *  Values are retrieved by calling `get-` method for every field (see
+    \ref datamap "data map").
+
+    \see __call()
+    \return array: data

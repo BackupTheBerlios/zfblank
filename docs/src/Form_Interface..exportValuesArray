@@ -1,0 +1,9 @@
+
+    This method is used from inside ZfBlank_ActiveRow_Abstract::setFromForm()
+    method to import form data to row object data. It forms appropriate data
+    array from values of form elements.
+
+    See ZfBlank_ActiveRow_Abstract::setValues() for description of format of the
+    returned data array.
+
+    \return array: exported data

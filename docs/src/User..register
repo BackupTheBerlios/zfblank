@@ -1,0 +1,9 @@
+    \param array $values must have 'login', 'password' and optionally 'fullName'
+    keys with appropriate values. If this parameter is omitted, the array
+    is exported from form that must be set before calling this method and
+    be capable to export an array with specified keys.
+    \see ZfBlank_Form::exportValuesArray()
+    \see ZfBlank_ActiveRow_Abstract::form()
+    \see ZfBlank_ActiveRow_Abstract::setFromForm()
+    \return boolean **true**: registration was successful; **false**: the
+    user with specified login name already exists

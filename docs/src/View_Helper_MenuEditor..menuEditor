@@ -1,0 +1,37 @@
+    Menu must be in form of unordered multi-level list with hyperlinks,
+    that is a default form of Zend_Navigation view helper output. That list
+    must be also wrapped by some tags pair (container). The container is
+    arbitrary itself, but it should be definable by some unique jQuery 
+    selector. This selector is passed as first function parameter.
+    
+    The next four parameters are URLs of real actions that process AJAX
+    menu editing requests, i.e. saving node, adding new node, node branching
+    (creating first child) and node deleting. Here is sample realization of
+    those controller actions.
+
+    Initializing AJAX content in controller's init() function:
+    \snippet modules/admin/controllers/GeneralController.php Menu Editor Init
+    Actions themselves:
+    \snippet modules/admin/controllers/GeneralController.php Menu Editor AJAX Actions
+
+    The last two parameters correspond HTML ids and class of some tags.
+    For simplicity, it's recommended to see HTML code generated for menu
+    and determine corresponding values.
+
+    This is sample view script for menu editor:
+
+    \include modules/admin/views/scripts/general/menu.phtml
+
+    \param string $containerSelector selector (in terms of jQuery) of
+    container holding the menu 
+    \param string $editSaveUrl URL of node saving action
+    \param string $editAddUrl URL of new node adding action
+    \param string $branchUrl URL of node branching action
+    \param string $deleteUrl URL of node deleting action
+    \param string $nodeIdPrefix each menu item (`<li>` element) has HTML
+    attribute `id="prefix-ID"` where
+    `ID` is a node id and `prefix` is to be given as value of this parameter
+    (without dash); the default is "sitemenu" (optional)
+    \param string $rootClass HTML class of global menu `<ul>` tag; default
+    is 'navigation' (optional)
+    \return string: JavaScript/jQuery site menu editor

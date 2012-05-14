@@ -1,0 +1,7 @@
+    \ingroup grp_category
+
+    Default row class is ZfBlank_Category.
+
+    Reference physical table schema (in MySql notation):
+
+    \include zfb.categories.sql

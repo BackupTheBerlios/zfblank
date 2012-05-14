@@ -1,0 +1,6 @@
+This package is distributed under the terms of GNU General Public License
+version 3 (or later). See it in the file COPYING in the root of package.
+
+Example application includes TinyMCE HTML editor (http://www.tinymce.com) which
+is distributed under GNU LGPL version 2.1. See it in the file
+public/tiny_mce/license.txt

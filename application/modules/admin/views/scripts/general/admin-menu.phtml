@@ -1,0 +1,7 @@
+<h2>Admin Menu Editor</h2>
+<div id="menu_editor">
+	<?php echo $this->siteMenu('Admin_Model_DbTable_AdminMenu') ?>
+</div>
+<?php echo $this->menuEditor('#menu_editor', '/admin/general/admin-edit',
+'/admin/general/admin-add', '/admin/general/admin-submenu',
+'/admin/general/admin-delete') ?>

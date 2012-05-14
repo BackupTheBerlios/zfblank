@@ -1,0 +1,4 @@
+
+    \note The object must be connected to table object of class
+    ZfBlank_DbTable_Items or its subclass.
+    \return **Zend_Db_Table_Rowset_Abstract**: set of items */

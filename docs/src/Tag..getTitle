@@ -1,0 +1,3 @@
+    \remark Required by **Zend_Tag_Taggable**. `setTitle()` method is normally
+    provided by ZfBlank_ActiveRow_Abstract::__call()
+    \return string: tag title

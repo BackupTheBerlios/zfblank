@@ -1,0 +1,12 @@
+<h2>News Categories</h2>
+<?php echo $this->renderTree(new ZfBlank_DbTable_Categories(array('name'=>'NewsCategories')), 'dom',
+    array(
+        'valueSource' => new ZfBlank_ActiveRow_FieldDecorator(array('fieldName' => 'name')),
+        'valueContainer' => array('a', 'attributes' => array(
+            'href' => new ZfBlank_ActiveRow_FieldDecorator(array(
+                'prefix' => '/news/by-category/id/',
+                'fieldName' => 'id',
+            ))
+        ))
+    ))->saveHTML();
+?>

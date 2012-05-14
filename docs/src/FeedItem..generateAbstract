@@ -1,0 +1,18 @@
+
+        Text is taken from _text_ field, abstract is written to _abstract_
+        field. Maximum length of abstract may be changed by
+        autoAbstractLengthSet() method.
+
+        First, a chunk of maximum length is extracted from beginning of the
+        text.
+        Then, search for the last sentence delimiter (dot, exclamation or
+        question character) is made and the remainder is cut. 
+        If there is no delimiters or the result's length is less than 1/4 of
+        maximum length, then the abstract's end
+        is set on the last space character (instead of sentence delimiter) and
+        incomplete sentence mark (see autoAbstractDotsSet()) is appended.
+
+        \note This method uses multibyte string (`mb_`) functions
+        \param boolean $check if set to **true**, generate abstract only if
+        current abstract (_abstract_ field) is empty (optional)
+        \return $this

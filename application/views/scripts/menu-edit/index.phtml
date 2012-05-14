@@ -1,0 +1,14 @@
+<h2>Site Menu Editor Demo</h2>
+<p>Menu editor is interactive JavaScript editor for <a href="/docs/group__grp__sitemenu.html">site menus</a>.
+It uses jQuery library.
+It's created by <a href="/docs/classZfBlank__View__Helper__MenuEditor.html">MenuEditor</a> view helper and backed by a controller providing AJAX actions for server-side editing purposes.</p>
+<p>This demo variant presents this site's admin zone menu.
+Its controller does not interact with database, so results will not be saved.
+Click on any menu tree node to see its edit buttons.</p>
+<div id="menu_editor">
+	<?php echo $this->siteMenu('Admin_Model_DbTable_AdminMenu') ?>
+</div>
+<?php echo $this->menuEditor('#menu_editor', '/menu-edit/edit',
+'/menu-edit/add', '/menu-edit/submenu',
+'/menu-edit/delete') ?>
+

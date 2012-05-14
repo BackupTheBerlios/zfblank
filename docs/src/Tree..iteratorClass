@@ -1,0 +1,6 @@
+    See ZfBlank_Tree class description subsection \ref iterators "Iterators"
+    for additional information.
+    \param string $class class name (optional)
+    \see **Iterator**
+    \see $_iteratorClass
+    \return string: previous or current iterator class name

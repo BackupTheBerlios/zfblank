@@ -1,0 +1,26 @@
+<p><a href="/admin/pages/edit">Create new content block.</a></p>
+<table width="100%">
+<thead><tr>
+    <td width="20%">Name</td>
+    <td width="60%">Title</td>
+    <td width="15%">Storage Type</td>
+    <td width="5%"></td>
+</tr></thead>
+<tbody>
+<?php foreach ($this->pages as $page): ?>
+	<tr>
+		<td><a href="/admin/pages/edit?name=<?php echo $page->getName() ?>"> <?php echo $page->getName() ?> </a></td>
+        <td><?php echo $page->getTitle() ?></td>
+        <td><?php echo $page->getStorage() ?></td>
+        <td><a class="page_delete" title="Delete" href="/admin/pages/delete?name=<?php echo $page->getName() ?>">X</a></td>
+	</tr>
+<?php endforeach ?>
+</tbody>
+</table>
+<script type="text/javascript">
+$(function() {
+    $(".page_delete").click(function (ev) {
+        if (!confirm("Delete content?")) ev.preventDefault();
+    });
+});
+</script>

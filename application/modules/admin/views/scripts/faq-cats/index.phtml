@@ -1,0 +1,14 @@
+<?php /* here attaching jQuery UI with theme, assuming that jQuery itself is attached in layout script */?>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+<?php echo $this->treeEditor(
+    new ZfBlank_DbTable_Categories(array('name'=>'FAQCategories')), /* using table to point the tree */
+    'cats',
+    '/admin/faq-cats/field-names',
+    '/admin/faq-cats/node-values',
+    '/admin/faq-cats/edit',
+    '/admin/faq-cats/add',
+    '/admin/faq-cats/branch',
+    '/admin/faq-cats/delete',
+    'name'
+) ?>

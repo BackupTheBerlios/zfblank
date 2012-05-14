@@ -1,0 +1,12 @@
+    \ingroup grp_commentable
+    
+    Table class is ZfBlank_DbTable_Commentable.
+
+    Comments reside in separate
+    table. See table class documentation for details.
+
+    \anchor datamap_commentable
+
+    ### Data Map ###
+
+    Data map is inherited from ZfBlank_Item.

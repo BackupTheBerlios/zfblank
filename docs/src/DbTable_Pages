@@ -1,0 +1,20 @@
+    \ingroup grp_pagecontent
+
+    Default row class is ZfBlank_PageContent.
+
+    This table class works with row class ZfBlank_PageContent and database table
+    containing named static content blocks.
+    Every block has unique string identifier (instead of auto-assigned
+    integer) that is more convenient to be used as a part of URL pointing
+    the page (when the block represents entire page, such as homepage, 'about'
+    page, etc.), or distinguish the block in admin zone. Block content may be
+    stored either in database or in file.
+
+    The sample database table schema (in MySql notation):
+
+    \include zfb.pagecontent.sql
+
+    When text is stored in file instead of database, path to text files
+    is determined by \ref $_textPath property (see also setTextPath()). Name
+    of the file is equal to content block name (i.e. primary key).
+    \see ZfBlank_PageContent

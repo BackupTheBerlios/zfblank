@@ -1,0 +1,44 @@
+<p>
+<a href="/docs/group__grp__pagecontent.html">Static page content</a>
+is static blocks (usually HTML) that are identified by unique names.
+The idea is to keep content outside of view scripts.
+All content blocks are kept in database table, but a block's text itself may be located in a disk file instead.
+There is a
+<a href=http://zfb.localhost/docs/classZfBlank__View__Helper__PageContent.html>view helper</a>
+included that enables to insert a content block to a page by its name.
+</p>
+<p>
+You can see in URL of this page that it has "static-content" at the place related to controller name.
+There is no "StaticContent" controller.
+This trick is done by means of the "Page" controller with the "show" action that just outputs one content block, and a controller plugin that searches static content table for given name and forwards to the action on success, passing the name to it.
+The plugin's code is shown below and it's located in
+<code>application/plugins/Page.php</code>.
+</p>
+
+<code><pre>
+    class Application_Plugin_Pages extends Zend_Controller_Plugin_Abstract
+    {
+
+        public function dispatchLoopStartup (
+            Zend_Controller_Request_Abstract $request
+        ) {
+            $dispatcher = Zend_Controller_Front::getInstance()-&gt;getDispatcher();
+
+            if ($request-&gt;getModuleName() == 'default'
+                &amp;&amp; !$dispatcher-&gt;isDispatchable($request)
+            ) {
+                $name = strtolower($request-&gt;getControllerName());
+                $table = new ZfBlank_DbTable_PageContent();
+                $select = $table-&gt;select()-&gt;from($table-&gt;info('name'), 'Name')
+                                          -&gt;where('Name = ?', $name);
+
+                if ($table-&gt;fetchAll($select)-&gt;count()) {
+                    $request-&gt;setControllerName('page');
+                    $request-&gt;setActionName('show');
+                    $request-&gt;setParam('name', $name);
+                }
+            }
+        }
+
+    }
+</pre></code>

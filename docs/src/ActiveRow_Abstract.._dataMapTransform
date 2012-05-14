@@ -1,0 +1,8 @@
+
+    This method may be called from constructor during process of checking and
+    completing \ref datamap "data map" array.
+    It takes physical DB column name and
+    return a name to be used as object property (field) name for it.
+    \see \ref autodatamap "About automatical data map completion" 
+    \param string $name column name
+    \return string: resulting field name

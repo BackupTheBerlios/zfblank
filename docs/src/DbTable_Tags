@@ -1,0 +1,7 @@
+    \ingroup grp_tag
+
+    Default row class is ZfBlank_Tag.
+
+    Reference physical DB table schema (in MySql notation):
+
+    \include zfb.tags.sql

@@ -1,0 +1,21 @@
+    \ingroup grp_sitemenu
+
+    As a subclass of **Zend_Navigation_Page_Uri** this class represents both
+    tree node and container. To become global menu container (root node) 
+    when loading menu tree by loadMenu() function, an instance must have id
+    (see **Zend_Navigation_Page::setId()**) set to **null** (it is the default
+    sinse it's done by this class constructor).
+
+    This class works with menu that is kept in database table. It interacts
+    with instance of class ZfBlank_DbTable_SiteMenu or its descendants.
+
+    The methods to set or get the name (text) of menu item: `getTitle()` and
+    `setTitle()`. The methods to set or get the hyperlink of menu item:
+    `getUri()` and `setUri()`. The item id can be accessed by `getId()` and
+    `setId()`. These methods come from parent class and they are used in load
+    and save procedures.
+
+    \see ZfBlank_DbTable_SiteMenu
+    \see **Zend_Navigation_Container**
+    \see **Zend_Navigation_Page**
+    \see **Zend_Navigation_Page_Uri**

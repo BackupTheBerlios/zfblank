@@ -1,0 +1,186 @@
+    \ingroup grp_root
+
+    ### Basics ###
+
+    This class is an attempt to embody [Active Record]
+    (http://martinfowler.com/eaaCatalog/activeRecord.html) design pattern.
+    In this package, it is base class for single database table row which 
+    usually represents an object of some type. It extends 
+    **Zend_Db_Table_Row_Abstract** and adds some new features to it, such as:
+    - field name transformation between table and class;
+    - access methods to object's data (`set-`, `get-` and others);
+    - data output modification by decorators;
+    - built-in interaction with forms;
+    - retrieving values from a table linked by many-to-many association.
+
+    \anchor datamap
+
+    ### Data Map ###
+
+    A large amount of features provided by this class is based on use of
+    \ref $_dataMap array. Shortly and first of all, this array maps names of DB
+    table columns to names of object properties that contain data loaded from
+    corresponding columns.
+
+    The array has following structure:
+    - Each key of this array represents a name of an object property,
+    which represents database row field and can be accessed directly (as in
+    **Zend_Db_Table_Row**) or via
+    \ref dataaccess_set "set-", \ref dataaccess_get "get-",
+    \ref dataaccess_is "is-" or \ref dataaccess_unique "unique-"
+    \ref accessmethods "access methods".
+    In this entire documentation, these property names are referenced to as
+    "field names" and the properties themselves are referenced to as "fields"
+    for short.
+    - Each corresponding value of the array represents 
+    corresponding "physical" name of the database table column.
+    In this entire documentation, these names are referenced to as "column"
+    names for short.
+
+    This class overloads _transformColumn() method from
+    **Zend_Db_Table_Row_Abstract**
+    to transform "field" names to "column" names, utilizing this array. 
+    \note Further overloading of _transformColumn() method in a subclass 
+    may break the class logic, so it's not recommended.
+
+    Also, field names are used by ZfBlank_DbTable_Abstract to form
+    \ref findfor "findFor-" method calls (see ZfBlank_DbTable_Abstract).
+
+    \anchor autodatamap
+    Since \ref $_dataMap array reflects a concrete data model, it is overloaded
+    in every this class' subclass, whose data model differs from
+    its immediate parent's one. Note hovewer, that actually there is no 
+    indispensable need to fill up the array with mappings for every database
+    table column. You can fill it partially or ever leave it empty.
+    If \ref $_finishDataMap class property is set to **true** (as it is by
+    default) the array will be completed
+    \ref autodatamap_details "automatically" during
+    the object instantiation, keeping already existing mappings untouched if
+    they correspond to existing columns.
+    The value of \ref $_finishDataMap property may be changed either by
+    subclassing or by passing \ref __construct() "finishDataMap" configuration
+    option to constructor. 
+
+    \anchor timestampfield
+    
+    #### Timestamp Fields ####
+
+    The sense of timestamp fields is that they are kept as integer UNIX
+    timestamps in database and object data, but their \ref dataaccess_set "set-"
+    and \ref dataaccess_get "get-"
+    access methods take (or return) appropriate **Zend_Date** object with 
+    time and date set.
+
+    Names of all timestamp fields in a concrete model are mentioned in
+    \ref $_timestampFields array which can be received and/or changed by
+    timestampFields() method.
+
+    \note You must provide correct local information to the system (e.g. with
+    a **date_default_timezone_set()** function call) in order to get correct
+    timestamps and date objects.
+
+    \anchor autodatamap_details
+    
+    ##### Automatical Data Map Completion Details #####
+
+    Automatical completion is possible only when the object is connected to 
+    a table object (i.e. created by **createRow()** or **fetchRow()** table
+    method, or `table` option is passed to the constructor, etc.).
+    Column names are transformed to field names by $_dataMapTransform() member
+    method. Its default work is:
+    - if the name contains substring `ID`, the substring is replaced with
+    `Id` (this is such a "special case");
+    - if the name contains underscores (\c _) it is fully lowercased and then
+    inflection is made (i.e. all underscores are removed and the letters that
+    are next to underscores are uppercased);
+    - first letter of the name is lowercased.
+
+    \anchor modelsdatamap
+
+    ##### Data Map in Models Note #####
+
+    Class documentation of each descendant of this class has subsection
+    "Data Map" where a set of fields used is described, somewhere not
+    completely. Database column names are given too. Some of fields
+    denoted _required_ that actually means that the field is used in the
+    class methods, so absense of it in the data map when using some method will
+    cause an error. This produces some conditions concerning such fields:
+    - if you extend the class and use different DB schema, you free to change
+    name of DB column for the field keeping its datatype and the field's name
+    unchanged;
+    - if you don't extend the class but just tweak the DB schema, and
+    \ref autodatamap "automatical completion" is on (it is, everywhere in the
+    package), you can't change column names. That's because the completion
+    mechanism deletes mappings for nonexistent columns, so, most probably, the
+    field will be lost. The one exception is to give the column the name that
+    \ref autodatamap_details "transforms" exactly to field name needed.
+
+    \note Some fields are required only when using some appropriate
+    feature of the model. They are marked **+/&ndash;** in "Required" column,
+    and methods requiring them are specified below the table.
+
+    \anchor accessmethods
+    
+    ### Data Access Methods ###
+
+    Besides direct access to row data via object properties inherited from
+    **Zend_Db_Table_Row_Abstract**, this class adds access to row data
+    via access method calls. A method name is formed from prefix, which is one
+    of `set`, `get`, `is` or `unique`),
+    and a field (property) name (i.e. one of the keys in \ref $_dataMap array)
+    having first letter uppercased. For example: `get-` method for a field named
+    `"name"` will be `getName()`. The behavior of a method is determined by
+    a prefix:
+
+    - \anchor dataaccess_set
+    **set**: accepts one argument and writes its value to the field.
+    Returns $this. If the field is a timestamp field (see
+    \ref timestampfield "Timestamp Fields"),
+    the argument must be an instance of **Zend_Date** class.
+
+    - \anchor dataaccess_get
+    **get**: returns current value of the field, previously making appropriate
+    transformations that takes place in the following two cases:
+        + if field decorator is set (see
+        \ref fielddecorators "Field Decorators"),
+        decorated (by calling ZfBlank_ActiveRow_FieldDecorator::decorate())
+        value is returned;
+        + if this is timestamp field (see
+        \ref timestampfield "Timestamp Fields"), **Zend_Date**
+        object is returned.
+
+    - \anchor dataaccess_is
+    **is**: boolean check of the field's value:
+        + if the value can represent boolean value (i.e., if it is
+        **true**, **false**, **0** or **1**) returns boolean;
+        + if the value is **null**, returns **null**;
+        + otherwise, throws an exception.
+
+    - \anchor dataaccess_unique
+    **unique**: check if value is unique in the scope of entire table column.
+    One optional argument (value) may be passed, in which case that value
+    will be examined instead of one hold in the object's field. Returns boolean.
+
+    \anchor fielddecorators
+
+    ### Field Decorators ###
+    
+    A decorator can be assigned to a field. Decorators only affect the output of
+    the field's \ref dataaccess_get "get-" access method, and the real field
+    value remains untouched and can be received via plain property access.
+
+    Decorators are of class ZfBlank_ActiveRow_FieldDecorator or its subclasses.
+    An object's field decoration scheme is contained as an array in the
+    $_fieldDecorators property. The array has following structure:
+    - **keys** are _strings_ containing field names;
+    - each **value** is an instance of ZfBlank_ActiveRow_FieldDecorator (or 
+    subclass) or a _string_ containing decorator class name.
+
+    Decorators are set, get or removed by fieldDecorator() method.
+
+    ### Forms ###
+
+    This class provides some methods to interact with forms, i.e. with
+    objects of class ZfBlack_Form which extends **Zend_Form**, or its
+    subclasses. See documentation for methods form(), validateForm() and
+    setFromForm().

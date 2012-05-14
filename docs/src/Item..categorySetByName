@@ -1,0 +1,3 @@
+    \note If there are several categories with the same name, first one is used.
+    \param string $name category name
+    \return mixed: category ID on success, **false** if category was not found

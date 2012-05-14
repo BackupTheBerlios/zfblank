@@ -1,0 +1,7 @@
+    This functions checks whether item's id is null, in which case item is 
+    saved as a new DB record. Otherwise, existing record is updated. The new
+    (for new items) or existing id is returned.
+    
+    \param ZfBlank_DbTable_SiteMenu $table save to different table (optional)
+    \param boolean $recursion whether to save all descendants (subtree)
+    \return mixed: item's ID.

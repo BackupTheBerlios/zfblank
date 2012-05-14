@@ -1,0 +1,57 @@
+    \ingroup grp_item
+
+    Default row class is ZfBlank_Item.
+    
+    Besides all inherited table features, this table holds and provides
+    access to information about three related tables: (1) categories table, (2)
+    tags table and (3) items-tags association table. It provides access to
+    that information and can create instances of the first two of tables.
+
+    Items table and categories (1)
+    table have one-to-many relation (one item can have only one category,
+    one category can include several items). Categories table base class is
+    ZfBlank_DbTable_Categories.
+
+    Items table and tags (2) table are
+    linked by association table forming many-to-many relation (one item can
+    have several tags, one tag can reference several items).
+    Tags table base class is ZfBlank_DbTable_Tags.
+
+    Note about subclassing, that it's unnecessary to create classes for every
+    related table, although this is also supported. See below for alternative
+    method.
+    
+    The association table (3) doesn't need to be presented by object at all,
+    because
+    it is referenced by name in DB requests. \ref $_tagsAssocTableName
+    property holds table name, and \ref $_tagsAssocItemColumn and
+    \ref $_tagsAssocTagColumn properties hold names of 'foreign key'
+    columns containing, respectively, item and tag ID's.
+
+    Categories and tags tables (1 and 2) can be presented in two ways.
+    First, \ref $_categoriesTable and \ref $_tagsTable properties contain either
+    table object instances or class names for categories and tags tables.
+    Then, if \ref $_categoriesTableByName and/or \ref $_tagsTableByName
+    properties are not **null** (as they may be set in subclasses), table
+    instance will be created and assigned
+    to a property __in constructor__, as follows (example for categories):
+
+        $class = $this->_categoriesTable;
+        $this->_categories = new $class($array('name' => $this->_categoriesTableByName));
+
+    The `'name'` option sets physical table name for the table object being
+    created (see **Zend_Db_Table_Abstract::__construct()**).
+    This allows to avoid creating dedicated class for
+    categories/tags DB tables when they use datasets similar to those in 
+    base classes. So, you can just set \ref $_categoriesTable to base class name
+    (say `'ZfBlank_Category'`) and \ref $_categoriesTableByName to table name
+    (e.g. `'FAQCategories'`). This approach is used in this class'
+    descendants, to keep off flooding the package with classes that differ 
+    mainly by their names.
+    
+    Categories and tags tables can be accessed using categoriesTable() and 
+    tagsTable() methods.
+
+    Reference physical table schema (in MySql notation):
+
+    \include zfb.items.sql

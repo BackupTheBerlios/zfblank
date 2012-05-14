@@ -1,0 +1,20 @@
+    \ingroup grp_category
+
+    Table class is ZfBlank_DbTable_Categories.
+
+    \anchor datamap_category
+
+    ### Data Map ###
+
+    Field Name | Column Name    | Type                | Required | Description
+    ---------- | -------------- | ------------------- | -------- | ---------------------------------------
+    \a id      | \c ID          | arbitrary           | +        | unique category ID
+    \a parent  | \c ParentID    | the same as of *id* | +/&ndash;| ID of parent category
+    \a offset  | \c ChildOffset | integer             | +/&ndash;| position among sibling categories (0 = first)
+    \a name    | \c Name        | string              | +        | category name
+
+    Fields _parent_ and _offset_ are required by inherited ZfBlank_Tree methods.
+    They can be abandoned if categories are not hierarchical.
+
+    \see \ref modelsdatamap "Data Map in Models Note"
+    \see ZfBlank_Item

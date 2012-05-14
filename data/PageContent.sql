@@ -1,0 +1,1 @@
+INSERT INTO `PageContent` VALUES ('index','file','Main Page','',NULL,''),('static-content','file','Static Content Demo','',NULL,''),('article-demo','file','Articles, Comments, etc. Demo Page','',NULL,'');

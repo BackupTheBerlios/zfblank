@@ -1,0 +1,7 @@
+    \ingroup grp_tree
+
+    Default row class is ZfBlank_Tree.
+
+    Reference physical DB table schema (in MySql notation):
+
+    \include zfb.tree.sql

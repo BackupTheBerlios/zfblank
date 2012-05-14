@@ -1,0 +1,11 @@
+    Set callback function to be called on each tree node to obtain
+    value for item being created. The callback will be given two parameters:
+    1. DOM document in which the tree is being created (type DOMDocument);
+    2. current tree node (type ZfBlank_Tree or descendant).
+
+    The callback must return DOMElement instance containing value.
+    \note If callback is set (i.e. not **null**)
+    \ref setValueSource() "value source" and 
+    \ref setValueContainer() "value container" will not be used.
+    \param callback $callback callback function
+    \return $this

@@ -1,0 +1,8 @@
+
+    If called with argument given, say that fields whose names are in argument
+    array are timestamp fields (see \ref $_timestampFields).
+
+    \param array $fields timestamp field names (optional)
+    \see datamap "Data Map"
+    \see timestampfield "Timestamp Fields"
+    \return array: previous (current) set of timestamp fields names

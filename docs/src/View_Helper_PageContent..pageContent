@@ -1,0 +1,8 @@
+
+    \param string $name content block name
+    \param string|ZfBlank_DbTable_PageContent $table table or table class to
+    override the default. By default, new instance of class specified
+    in \ref $_tableClass is created. (optional) 
+    \return ZfBlank_PageContent: content (returns empty object if 
+    requested content block doesn't exist)
+    \see ZfBlank_PageContent

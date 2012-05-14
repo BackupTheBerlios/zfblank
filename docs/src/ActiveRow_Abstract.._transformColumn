@@ -1,0 +1,12 @@
+
+    The parent method overloaded, providing column name transformation
+    by using \ref datamap "data map" array.
+    \note Overloading this method may break overall class logic, so it's 
+    not recommended. To change the way column names are transformed to field
+    names, if you didn't defined the 
+    transformation manually in \ref datamap "data map" &mdash; overload
+    _dataMapTransform() method instead.
+    \param string $columnName physical DB column name
+    \see datamap "Data Map"
+    \see _dataMapTransform()
+    \return string: object property (field) name

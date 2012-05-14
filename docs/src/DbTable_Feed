@@ -1,0 +1,9 @@
+    \ingroup grp_feed
+
+    Default row class is ZfBlank_FeedItem.
+
+    Recommended DB schema (in MySql notation):
+
+    \include zfb.feed.sql
+
+    \see ZfBlank_DbTable_Users

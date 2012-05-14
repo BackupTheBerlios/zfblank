@@ -1,0 +1,6 @@
+    \remark Required by **Zend_Tag_Taggable**.
+
+    Proxy to \ref ZfBlank_ActiveRow_Abstract::setValues() "setValues()"
+    \param string $name parameter (field) name
+    \param mixed $value parameter (field) value
+    \return $this

@@ -1,0 +1,11 @@
+<?php echo $this->headScript()
+	->appendFile('/tiny_mce/tiny_mce.js') ?>
+<script type="text/javascript">
+	$(function() {
+		tinyMCE.init({
+			mode: 'textareas',
+			theme: 'advanced',
+		});
+			//plugins: 'pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template'
+	});
+</script>

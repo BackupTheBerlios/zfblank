@@ -1,0 +1,82 @@
+    \ingroup grp_tree
+
+    Table class is ZfBlank_DbTable_Tree
+
+ *  ### Basics
+
+    This class represents single tree node, children container and database
+    table row at the same time. It assumes that all nodes forming one whole
+    tree are contained in one database table and loads the tree or its part
+    from this table using recursion. There is no special container class for
+    this type of tree.
+
+    A node becomes *root node*, simultaneously being tree container,
+    simply when it calls loadTree() method that
+    loads subtree based upon it from database. If that node is empty (i.e. its
+    *id* is **null**), it always loads entire tree.
+
+    Nodes that are recorded as having no parent (i.e. their *parent id* is set
+    to **null** in database) may be considered as *toplevel nodes* if there are
+    several such nodes, or *root node* if there's just one.
+   
+    So if you don't keep the root node in the table, you can load the tree this
+    way (assume that `$treeTbl` is a table object of a class extending
+    ZfBlank_DbTable_Abstract):
+        
+    \code
+    $root = $treeTbl->createRow; // create empty node
+    $root->loadTree();           // load tree
+                                 // toplevel nodes are the children of $root now
+    \endcode
+
+ *  If you have root node in the table, load the tree this way:
+
+    \code
+    $root = $treeTbl->findForParent(null)->getRow(0); // retrieve the root node
+    $root->loadTree();                                // load tree
+    \endcode
+
+ *  ### Database
+
+    Base table class is ZfBlank_DbTable_Tree.
+
+    See \ref datamap_tree "data map" for the list of necessary object data
+    fields names (physical column names are arbitrary, as usual).
+
+    \note Amongst all the methods specific to this class, only loadTree(),
+    loadChildren() and, optionally, addChild() methods work with database.
+    All the other methods work with ready-loaded or created objects.
+    So, for example,
+    if some node has children recorded in database, it's hasChildren() method
+    will return **true** only if those children have been loaded already.
+
+    ### Satellites
+
+    \anchor iterators
+    ##### Iterators
+
+    For this time, there are two types of iterator for this tree model:
+    - ZfBlank_Tree_Iterator_DirectTraversal
+    - ZfBlank_Tree_Iterator_Recursive
+
+    \anchor renderers
+
+    ##### Renderers
+
+    There are several renderers capable to "translate" a tree to some
+    another (tree-like or not) data structure or another representation,
+    for example, DOM tree. See the interface and classes that have names
+    beginning with "ZfBlank_Tree_Renderer_".
+    
+    \anchor datamap_tree
+
+    ### Data Map ###
+
+    Field Name | Column Name    | Type                | Required | Description
+    ---------- | -------------- | ------------------- | -------- | ---------------------------------------
+    \a id      | \c ID          | arbitrary           | +        | unique tree node ID
+    \a parent  | \c ParentID    | the same as of *id* | +        | ID of tree node parent
+    \a offset  | \c ChildOffset | integer             | +        | position among sibling nodes (0 = first)
+    \a name    | \c Name        | string              |          | node name (optional)
+
+    \see \ref modelsdatamap "Data Map in Models Note"

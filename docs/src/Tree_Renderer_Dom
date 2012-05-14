@@ -1,0 +1,65 @@
+    \ingroup grp_tree
+
+    Creates DOM document that contains DOM representation of the ZfBlank_Tree
+    tree. To use this renderer first give it the root node of the tree using
+    setTree() method or 'tree' constructor option (this is common for all
+    tree renderers) and optionally set other parameters.
+    And then call render() method to retrieve the result.
+
+    Structure of resulting DOM tree is as follows. (Note: the word "element"
+    further references DOM Element that represents a tag.)
+    Every ZfBlank_Tree node is represented by _item_ element. The _root_
+    (or _global_) _container_ is an element containing all items.
+    Every item contains _value_ specific to it, optionally wrapped by
+    _value container_ element, and, if the node has children, 
+    _children container_ element filled with _child items_ optionally separated
+    by _children separator_ element.
+
+    \anchor earray
+    ### DOM Element Properties Array.
+    Many methods here accept an array as a parameter, that describes some DOM
+    element. Here is the definition for this type of array. First, its 
+    value with index \[0\] (i.e. exactly first, unnamed value), that is
+    mandatory, gives the name (i.e. tag name) of the element. Other array values
+    have names.
+
+    Name / Index| Type                                       | Description
+    :-----------|:-------------------------------------------|:-----------------
+    0           | string                                     | valid element tag name
+    'value'     | string or ZfBlank_ActiveRow_FieldDecorator | element value (second constructor parameter of **DOMElement**) (optional)
+    'attributes'| array                                      | element (tag) attributes (see below) (optional)
+    'recursion' | boolean                                    | used internally to enable recursion (do not use)
+
+    The usage of ZfBlank_ActiveRow_FieldDecorator instance as a value in this
+    array is the same as for setValueSource() method.
+
+    Array 'attributes' has element attributes' names as its keys, and its values
+    give attributes' values. Array values can be strings or instances of
+    ZfBlank_ActiveRow_FieldDecorator. The usage of field decorators are the
+    same as for setValueSource() method.
+
+    ### Example
+    Conceive that we have ZfBlank_Tree tree that contains a site map.
+    It should be rendered in HTML as multi-level unordered list each
+    item of which contains hyperlink to a page. Each node of our tree
+    has data fields 'name' and 'link' containing page title and URL
+    correspondingly.
+
+    \include "Tree_Renderer_Dom...example"
+
+    To output the result, such code may be placed into a view script:
+
+    \code
+    <?php echo $document->saveHTML() ?>
+    \endcode
+
+    ZfBlank_Tree::render() function may be used instead of creating a renderer
+    object:
+
+    \code
+    $document = $sitemap->render('dom', array(
+
+        ... renderer options ...
+
+    ));
+    \endcode

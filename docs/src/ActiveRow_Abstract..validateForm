@@ -1,0 +1,15 @@
+    
+    Perform validation of a form with given values `$values`. Validation
+    is done by `isValid()` method (see **Zend_Form::isValid()** in Zend API
+    docs).
+    Format and semantics of `$values` array is the same as for `isValid()`
+    form method. If `$form`
+    argument is not given, the form must be already installed by form() method,
+    otherwise an error will be caused. If `$form` is given,
+    it is used for validation and installed to the object by form() method. 
+
+    \param array $values form values
+    \param ZfBlank_Form $form form to validate (optional)
+    \see form()
+    \see **Zend_Form::isValid()**
+    \return boolean: the result of `Zend_Form::isValid()` method call

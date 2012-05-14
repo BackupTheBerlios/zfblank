@@ -1,0 +1,10 @@
+    \ingroup grp_user
+
+    Default row class is ZfBlank_User.
+
+    This table class works with row class ZfBlank_User and database table
+    containing user accounting information intended mainly for users login.
+    The sample database table schema (in MySql notation):
+
+    \include zfb.users.sql
+    \see ZfBlank_User

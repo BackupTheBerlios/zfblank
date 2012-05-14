@@ -1,0 +1,4 @@
+    \ingroup grp_view
+    \see **Zend_Paginator**
+    \see **Zend_Paginator_Adapter_DbTableSelect**
+    \see **Zend_Db_Table_Select**

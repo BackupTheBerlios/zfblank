@@ -1,0 +1,5 @@
+    \remark Required by **Zend_Tag_Taggable**.
+
+    Actually returns value of data field with given name.
+    \param string $name parameter name
+    \return mixed: parameter (field) value

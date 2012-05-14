@@ -1,0 +1,18 @@
+
+    \note
+    For unification with ZfBlank_ActiveRow_Abstract, field (row object property)
+    names rather than physical table column names are used here as first
+    parameter.
+    Note, that an empty row object is instantiated first, so all
+    \ref autodatamap "data map completions" are made before determining real
+    column name from the field name. 
+
+    This method searches table for the rows in which a column represented by
+    field name has value given in second parameter, and returns
+    `Zend_Db_Table_Rowset` filled with row objects (i.e. descendants of
+    ZfBlank_ActiveRow_Abstract appropriate to this table object)
+
+    \param string $field field name
+    \param mixed $value value
+    \see \ref datamap "Data Map"
+    \return ZfBlank_ActiveRow_Abstract: matching rows 

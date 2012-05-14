@@ -1,0 +1,17 @@
+    \ingroup grp_comment
+
+    Default row class is ZfBlank_Comment.
+
+    This table class adds (optional) support of relation with a users table for
+    comments authors. By default, the author is simply indicated by a string
+    with his/her
+    name. When \ref $_usersTable property is not **null** (as it can be set
+    in a subclass), getUsersTable()
+    method will return table object for users table and
+    ZfBlank_Comment::authorName() will return name taken from that table.
+
+    Reference physical table schema (in MySql notation):
+
+    \include zfb.comments.sql
+
+    \see ZfBlank_DbTable_Users

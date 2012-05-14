@@ -1,0 +1,5 @@
+    Checks if name (identifier) given is unique for the table. This method
+    may be called when creating new page to prevent primary key clash.
+    If parameter is omitted the name is taken from object data (getName())
+    \param string $name name to check
+    \return boolean: **true** if name is unique, **false** otherwise

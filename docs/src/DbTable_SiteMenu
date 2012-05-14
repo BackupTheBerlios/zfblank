@@ -1,0 +1,17 @@
+    \ingroup grp_sitemenu
+
+    The table contains all items of site menu tree. Every menu item
+    consists of:
+    - unique ID;
+    - name (displayed in hyperlink);
+    - link (hyperlink URL);
+    - ID of parent menu item (or null if it's toplevel menu item).
+    - item depth inside menu three
+
+    Recomended database schema for this table (in MySQL notation):
+    \include zfb.sitemenu.sql
+    
+    \note All column names in this schema are hardcoded in this class
+    properties and some methods of ZfBlank_SiteMenu class. Changing them
+    may result in broken functionality.
+    \see ZfBlank_SiteMenu

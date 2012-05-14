@@ -1,0 +1,3 @@
+    Proxy to **Zend_Auth::clearIdentity()**
+    \see **Zend_Auth::clearIdentity()**
+    \return $this

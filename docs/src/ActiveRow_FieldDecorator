@@ -1,0 +1,17 @@
+    \ingroup grp_root
+
+ *  To inquire about 'fields' and 'field names' see
+    \ref datamap "Data Map". A common usage of this class is
+    as following:
+    - bind to a row object and set field name by calling corresponding methods
+    or setting (\ref __construct() "constructor") options;
+    - set miscellaneous decoration parameters by calling corresponding methods
+    or setting (\ref __construct() "constructor") options;
+    - retrieve the result by calling decorate() method.
+
+    Another way of use is to extend this class and preset some options
+    in protected variables, which is set by default to **null** here.
+
+    \see ZfBlank_ActiveRow_Abstract::fieldDecorator()
+    \todo More decoration features (substring replacement, regex replacement,
+    ...)

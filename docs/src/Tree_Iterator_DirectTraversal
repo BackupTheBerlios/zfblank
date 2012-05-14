@@ -1,0 +1,17 @@
+    \ingroup grp_tree
+
+    This iterator can be used to simply walk through entire tree straight from
+    root node to very last leaf node. Each step it sets two parameters, one of
+    which holds current depth of node inside the tree, and other indicates
+    difference between previous and current depths. Children are passed from
+    first to last.
+
+    This iterator implements PHP **Iterator** interface.
+
+    \note If an iterator has been taken from "empty" root node (see
+    ZfBlank_Tree) and you use this iterator in **foreach** loop: see
+    rewindPoint() on how to exclude root node from iteration set.
+
+    \see **Iterator**
+    \see ZfBlank_Tree::getIterator()
+    \see ZfBlank_Tree::iteratorClass()

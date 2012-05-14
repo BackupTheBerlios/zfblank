@@ -1,0 +1,7 @@
+    \param ZfBlank_Tree $node child node to add
+    \param integer $offset offset for child (**0** is first); if this parameter
+    is omitted or is **null** the node will be added as the last child
+    \param boolean $hard whether to save added child to database instantly,
+    using save() method
+    \see **Zend_Db_Table_Row_Abstract::save()**
+    \return ZfBlank_Tree: added child node

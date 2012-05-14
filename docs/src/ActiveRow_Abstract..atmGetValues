@@ -1,0 +1,22 @@
+
+    Get values rowset from table linked with this object's table via
+    association (many-to-many) table. Values table must use an 
+    ZfBlank_ActiveRow_Abstract subclass as its row class as well.
+    
+    \param ZfBlank_DbTable_Abstract $valuesTable values table
+    \param string $assocTable physical name of association table
+    \param string $assocKeyColumn name of association table column with foreign 
+    keys from this object's table
+    \param string $assocValueKeyColumn name of association table column with
+    foreign keys from values table
+    \param string $order order specification as for **Zend_Db_Select::order()**
+    (optional)
+    \param string $keyField key field (not column) name in this object, 
+    default is `'id'` (optional)
+    \param string $valueKeyField key field (not column) name in values,
+    default is `'id'` (optional)
+    
+    \see ZfBlank_DbTable_Abstract::atmSelect()
+
+    \return Zend_Db_Table_Rowset_Abstract: values (rows) from values table that 
+    correspond to calling object

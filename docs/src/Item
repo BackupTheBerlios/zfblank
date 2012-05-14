@@ -1,0 +1,37 @@
+    \ingroup grp_item
+
+    Table class is ZfBlank_DbTable_Items.
+
+    Item that can belong to some category and characterized by set of tags.
+    Also it can be itself a node in some tree structure. This class is a 
+    superclass for such models as news, publications, merchandise items,
+    etc. All items are stored in one database table. Base table class is
+    ZfBlank_DbTable_Items. Categories are instances of class ZfBlank_Category.
+    Tags are instances of class ZfBlank_Tag.
+    Tags and items are located in separate DB tables.
+    See table class documentation for more info.
+
+    \anchor datamap_item
+
+    ### Data Map ###
+
+    Note that though all _column_ names (values of array) can be varied freely,
+    some _field_ names are referenced in this and another classes methods so
+    renaming or removal of them will result in broken functionality.
+    Their data types and purpose must be kept as well. 
+    _parent_ and _offset_ fields may be abandoned if items are not organized
+    in tree structure. _category_ field may be abandoned if items are not
+    categorized. _id_ field is mandatory unconditionally.
+
+    Field Name  | Column Name       |Type                | Required | Description
+    ----------  | ----------------- |------------------- | -------- | ---------------------------------------
+    \a id       | \c ID             |arbitrary           | +        | unique tree node ID
+    \a parent   | \c ParentID       |the same as of *id* | +/&ndash;| ID of tree node parent
+    \a offset   | \c ChildOffset    |integer             | +/&ndash;| position among sibling nodes (0 = first)
+    \a category | \c categoryID     |arbitrary           | +/&ndash;| category ID (foreign key)
+
+    Fields _parent_ and _offset_ are required by inherited ZfBlank_Tree methods.
+    They can be abandoned if items are not organized hierarchically.
+
+    Methods requiring _category_ field: categoryName(), categorySetByName().
+    \see \ref modelsdatamap "Data Map in Models Note"

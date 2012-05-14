@@ -1,0 +1,16 @@
+<h2>Articles, Comments, Categories and Tags</h2>
+<p>
+See
+<a href="/news">News</a>
+for a demonstration of categorizable and taggable articles that can be commented.
+News are made from
+<a href="/docs/group__grp__feed.html">Feed</a>
+module that supplements
+<a href="/docs/group__grp__article.html">articles</a>
+mainly with ability to generate short descriptions from article body.
+</p>
+<p>
+Comments can also comment one another thus forming a "comment tree".
+But it's not implemented in News yet, as it requires additional browser-side work.
+Also, if user registration is on the site, articles, comments and feedback are able to cooperate with user accounts.
+</p>

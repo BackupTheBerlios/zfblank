@@ -1,0 +1,10 @@
+
+    If $decorator argument is set and is not **false**, assign the new
+    decorator for given field. If it's **false**, remove the decorator for this
+    field.
+    \see \ref datamap "Data Map"
+    \see $_fieldDecorators
+    \param string $fieldName
+    \param ZfBlank_ActiveRow_FieldDecorator|string $decorator (optional)
+    \return string | ZfBlank_ActiveRow_FieldDecorator: previous decorator 
+    class name or decorator object or **null**.

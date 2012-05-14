@@ -1,0 +1,28 @@
+    \ingroup grp_pagecontent
+
+    Row class for ZfBlank_DbTable_PageContent table. Represents one named
+    content block.
+
+    \anchor datamap_pagecontent
+
+    ### Data Map ###
+
+    Field Name     | Column Name    | Type   | Required | Description
+    -------------- | -------------- | ------ | -------- | --------------------------------------
+    \a name        | \c Name        | string | +        | Unique string identifier (name) of the content block
+    \a storage     | \c TextStorage | string | +        | \c 'db' or \c 'file': where to store content.
+    \a title       | \c Title       | string |          | Title of the page/block 
+    \a description | \c Description | string |          | Description (or abstract) of the page/block
+    \a text        | \c Body        | text   | +        | Content body (unused when \a storage = \c 'file')
+    \a tags        | \c Tags        | string |          | Page/block tags
+
+    When _storage_ field is set to \c 'file', content is written/read to/from a file
+    located under the path stored in table object (
+    \ref ZfBlank_DbTable_PageContent::setTextPath() "setTextPath()", 
+    \ref ZfBlank_DbTable_PageContent::getTextPath() "getTextPath()"). File name
+    is the same as the page identifier, i.e. set from value of _name_ data
+    field.
+
+    \see \ref modelsdatamap "Data Map in Models Note"
+    \see ZfBlank_DbTable_PageContent::getTextPath()
+    \see ZfBlank_DbTable_PageContent::setTextPath()

@@ -1,0 +1,31 @@
+    The tree is rendered as unordered multilevel list. Each node is represented
+    by so-called _title_ taken from some node's appointed data field.
+
+    Six parameters from third to eighth are URLs of real actions that process
+    AJAX tree editing requests: retrieving field names for this tree class,
+    retrieving current values of an individual node, saving node, adding new
+    node, node branching (creating first child) and node deleting. Here is
+    sample realization of those controller actions:
+
+    \snippet modules/admin/controllers/FaqCatsController.php Tree Editor AJAX Actions
+
+    This is example view script for tree editor:
+
+    \include modules/admin/views/scripts/faq-cats/index.phtml
+
+    \param ZfBlank_Tree|ZfBlank_DbTable_Abstract $tree tree root / tree table
+    (proxied to ZfBlank_View_Helper_RenderTree)
+    \param string $containerClass the tree is always wrapped into _div_ that
+    have class specified here
+    \param string $fieldNamesUrl URL of action to get JSON with field names
+    \param string $nodeValuesUrl URL of action to get JSON with node values
+    \param string $editSaveUrl URL of node saving action
+    \param string $editAddUrl URL of new node adding action
+    \param string $branchUrl URL of node branching action
+    \param string $deleteUrl URL of node deleting action
+    \param string $titleField name of field to get node title from 
+    \param array $textareas names of fields for which textareas must be
+    used instead of inputs in node editor box (optional)
+    \see ZfBlank_Tree
+    \see \ref datamap "Data Map"
+    \return string: JavaScript/jQuery tree editor

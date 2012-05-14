@@ -1,0 +1,3 @@
+    Proxy to **Zend_Auth::getIdentity()**
+    \see **Zend_Auth::getIdentity()**
+    \return mixed|null user identity (login name) or **null**

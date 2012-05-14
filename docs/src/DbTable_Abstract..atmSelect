@@ -1,0 +1,20 @@
+
+    Returns select object for values from table linked with this table via
+    association (many-to-many) table. Calling object must be connected to its
+    table and have not-null key (id).
+    Values table must use an
+    ZfBlank_ActiveRow_Abstract subclass as its row class as well.
+    
+    \param mixed $key the key (id) of item in this table to get values for
+    \param ZfBlank_DbTable_Abstract $valuesTable values table
+    \param string $assocTable physical name of association table
+    \param string $assocKeyColumn name of association table column with foreign 
+    keys from this object's table
+    \param string $assocValueKeyColumn name of association table column with
+    foreign keys from values table
+    \param string $valueKeyField name of key field (not column) in values,
+    default is `'id'` (optional)
+
+    \see ZfBlank_ActiveRow_Abstract::atmGetValues()
+
+    \return **Zend_Db_Select**: select object

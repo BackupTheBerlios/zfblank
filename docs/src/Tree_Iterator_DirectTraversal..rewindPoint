@@ -1,0 +1,21 @@
+    When rewind() is called the iterator returns to the node from which
+    the iteration began (the start node).
+    This method allows to change that node to that is current for the moment.
+
+    It may be useful in a situation when the start node is "empty" root node
+    (see ZfBlank_Tree class descriptions for details). Since **foreach**
+    operator rewinds iterator given to it before starting iteration, it
+    may be undesirable to include an empty node to the loop. In this case
+    you can write code like this: 
+
+    \code
+    $iterator = $treeRoot->getIterator();
+    $iterator->next()               // iterate to the first child of the root
+    $iterator->rewindPoint()        // make this child the first iteration point
+
+    foreach ($iterator as $node) {  // the loop starts on the first toplevel node instead of root
+        ...
+    } 
+    \endcode
+    \see $_startNode
+    \return $this

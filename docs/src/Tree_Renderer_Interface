@@ -1,0 +1,5 @@
+    \ingroup grp_tree
+
+    Tree renderer is a class that converts a tree of type ZfBlank_Tree to
+    some another tree-like or not data structure while keeping appropriate
+    relations between nodes or reflecting those relations in some manner.

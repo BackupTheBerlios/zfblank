@@ -1,0 +1,31 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php echo $this->headMeta()
+	->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8');?>
+<?php echo $this->headLink()
+	->appendStylesheet('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/flora/jquery-ui.css')
+	->appendStylesheet('/dropdown-menu/dropdown-menu-base.css')
+?>
+<?php echo $this->headScript()
+	->appendFile('http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js')
+	->appendFile('http://ajax.googleapis.com/ajax/libs/jquery/1.8.16/jquery-ui.js')
+	->appendFile('/dropdown-menu/dropdown-menu.js')
+?>
+</head>
+<body>
+    <h1>ZF_Blanks Site Admin</h1>
+	<?php $request = Zend_Controller_Front::getInstance()->getRequest();
+	if ($request->getActionName() != 'login'): ?>
+	<div id="adminMenu">
+		<?php echo $this->siteMenu(new Admin_Model_DbTable_AdminMenu()) ?>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+			$("div#adminMenu").initMenu();
+		});
+	</script> 
+	<?php endif ?>
+	<?php echo $this->layout()->content; ?>
+    <address>Copyright &copy; 2011,2012 <a href="http://wooden.byethost32.com">Serge V. Baumer</a></address>
+</body>

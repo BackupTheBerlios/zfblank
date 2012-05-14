@@ -1,0 +1,17 @@
+    \ingroup grp_feedback
+
+    Default row class is ZfBlank_Feedback.
+
+    This class adds (optional) support of relation with a users table for
+    comment authors. By default, the author is simply indicated by a string with
+    his/her
+    name. When \ref $_usersTable property is not **null** (as it can be set
+    in a subclass), getUsersTable()
+    method will return table object for users table and
+    ZfBlank_Feedback::authorName() will return name taken from that table.
+
+    Sample database table schema (in MySql notation):
+
+    \include zfb.feedback.sql
+
+    \see ZfBlank_DbTable_Users

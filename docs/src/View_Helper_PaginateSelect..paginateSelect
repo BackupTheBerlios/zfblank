@@ -1,0 +1,12 @@
+    This simple view helper allows to remove paginator stuff from a controller.
+    It takes ready-made select object created by appropriate table object
+    using **Zend_Db_Table_Abstract::select()**
+    method with all needed request parameters set. Next, it
+    looks for GET request parameter `'page'` to get current page number.
+    If there is no `'page'` parameter, it assumes page number is 1.
+    \param Zend_Db_Table_Select $select select object
+    \return Zend_Paginator: the paginator
+    \see **Zend_Paginator**
+    \see **Zend_Paginator_Adapter_DbTableSelect**
+    \see **Zend_Db_Table_Select**
+    \see **Zend_Controller_Request_Http::getQuery()**

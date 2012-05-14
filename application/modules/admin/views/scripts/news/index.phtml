@@ -1,0 +1,17 @@
+<h2>News</h2>
+<?php echo $this->siteSubMenu('News', new Admin_Model_DbTable_AdminMenu(), 'name') ?>
+<table width="100%">
+<?php foreach (($paginator = $this->paginateSelect($this->table->select()->order('PubTimeStamp DESC'))) as $item): ?>
+<tr>
+    <td>
+        <h3 style='font-size:medium;'><?php echo $item->getTitle() ?></h3>
+        <div style='font-size:xx-small;'><?php echo $item->getTime() ?></div>
+        <p style='font-size:x-small;'><?php echo $item->getAbstract() ?></p>
+    </td>
+    <td><?php echo $item->categoryName() ?></td>
+    <td><a href="/admin/news/edit/id/<?php echo $item->getId() ?>?page=<?php echo $page = $paginator->getCurrentPageNumber() ?>">edit</a></td>
+    <td><a href="/admin/news/delete/id/<?php echo $item->getId() ?>?page=<?php echo $page ?>">delete</a></td>
+</tr>
+<?php endforeach ?>
+</table>
+<p><strong>Pages:</strong> <?php echo $this->paginationControl($paginator, 'Sliding', 'pagination.phtml', array('url'=>'/admin/news')) ?></p>

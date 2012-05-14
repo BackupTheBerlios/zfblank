@@ -1,0 +1,3 @@
+    \var string $_replacement
+    \note When the value of this variable is not **null**, it replaces all
+    another output, including field value.

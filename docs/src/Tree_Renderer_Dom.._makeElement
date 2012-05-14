@@ -1,0 +1,5 @@
+    \param DOMDocument $doc DOM document
+    \param string|array $params element tag name or
+    \ref earray "properties array"
+    \param ZfBlank_ActiveRow_Abstract $row current tree node
+    \return DOMElement: the created element

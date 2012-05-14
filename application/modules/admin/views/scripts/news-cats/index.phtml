@@ -1,0 +1,13 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+<?php echo $this->treeEditor(
+    new ZfBlank_DbTable_Categories(array('name'=>'NewsCategories')), 
+    'cats',
+    '/admin/news-cats/field-names',
+    '/admin/news-cats/node-values',
+    '/admin/news-cats/edit',
+    '/admin/news-cats/add',
+    '/admin/news-cats/branch',
+    '/admin/news-cats/delete',
+    'name'
+) ?>
