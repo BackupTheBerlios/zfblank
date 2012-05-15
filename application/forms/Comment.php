@@ -45,11 +45,10 @@ class Application_Form_Comment extends ZfBlank_Form
             'label' => 'Enter code:',
             'required' => true,
             'ignore' => true,
-            'captcha' => 'image',
+            'captcha' => 'figlet',
         ));
 
-        $this->getElement('captcha')->getCaptcha()
-             ->setFont(APPLICATION_PATH . '/fonts/AHGBold.ttf');
+        $this->getElement('captcha')->getCaptcha()->setWordlen(5);
 
         $this->addElement('submit', 'submit', array(
             'label' => 'Send',
