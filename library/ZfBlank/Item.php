@@ -43,8 +43,8 @@ class ZfBlank_Item extends ZfBlank_Tree
     public function categoryName ()
     {
         $rowset = $this->getTable()->categoriesTable()
-                       ->find($this->getCategory());
-        return ($rowset->count() == 0) ?  null : $rowset->getRow(0)->name;
+                       ->find($this->category);
+        return ($rowset->count() == 0) ?  null : $rowset->getRow(0)->getName();
     }
 
     /** \brief Set category by it's name instead of ID

@@ -162,7 +162,7 @@ class ZfBlank_Tree_Renderer_IndentedStrings
                 }
 
                 if ($this->_idKeys) {
-                    $result[$node->getId()] = $string;
+                    $result[$node->id] = $string;
                 } else {
                     $result[] = $string;
                 }

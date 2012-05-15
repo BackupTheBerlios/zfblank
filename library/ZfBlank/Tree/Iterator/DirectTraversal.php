@@ -76,7 +76,7 @@ class ZfBlank_Tree_Iterator_DirectTraversal implements Iterator
     */
     public function key ()
     {
-        return $this->_current->getId();
+        return $this->_current->id;
     }
 
     /**
@@ -172,7 +172,7 @@ class ZfBlank_Tree_Iterator_DirectTraversal implements Iterator
                 $depth--;
                 $next = $current->parentNodeGet();
 
-                if ($next === null || $next->getId() === null
+                if ($next === null || $next->id === null
                     || $depth === 0
                 ) {
                     $next = null;

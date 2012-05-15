@@ -49,7 +49,7 @@ class ZfBlank_Feedback extends ZfBlank_ActiveRow_Abstract
         if (($users = $this->getTable()->getUsersTable()) !== null) {
             return $users->findFor('author', $this->author)
                          ->getRow(0)
-                         ->getName();
+                         ->name;
         }
 
         return null;

@@ -67,7 +67,7 @@ class ZfBlank_PageContent extends ZfBlank_ActiveRow_Abstract
     protected function _filename()
     {
         return $this->getTable()->getTextPath() . DIRECTORY_SEPARATOR
-                                                . $this->getName();
+                                                . $this->name;
     }
 
     /** \brief Get content.

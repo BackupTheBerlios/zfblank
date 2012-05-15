@@ -108,7 +108,7 @@ class ZfBlank_Tree
     public function firstChild () 
     {
         if (($parent = $this->parentNodeGet()) === null) return true;
-        return $this->getOffset() == 0;
+        return $this->offset == 0;
     }
 
     /** \brief Is this node the last child of its parent.
@@ -117,7 +117,7 @@ class ZfBlank_Tree
     public function lastChild ()
     {
         if (($parent = $this->parentNodeGet()) === null) return true;
-        return $this->getOffset() == $parent->countChildNodes() - 1;
+        return $this->offset == $parent->countChildNodes() - 1;
     }
 
     /** \brief Add a child node.
@@ -126,7 +126,7 @@ class ZfBlank_Tree
     public function addChild (ZfBlank_Tree $node, $offset = null,
         $hard = false
     ) {
-        $node->setParent($this->getId())->parentNodeSet($this);
+        $node->setParent($this->id)->parentNodeSet($this);
 
         if ($offset !== null && $this->hasChildren()) {
             if ($offset >= ($cnt = count($this->_children))) {
@@ -141,7 +141,7 @@ class ZfBlank_Tree
                         if ($index === $offset) {
                             $new[] = $node;
                         }
-                        $child->setOffset($child->getOffset() + 1);
+                        $child->setOffset($child->offset + 1);
                         if ($hard) $child->save();
                     }
 
@@ -166,7 +166,7 @@ class ZfBlank_Tree
     protected function _nodeKey ($node)
     {
         if ($node instanceof ZfBlank_Tree) {
-            $key = $node->getId();
+            $key = $node->id;
         } else {
             $key = $node;
         }
@@ -185,7 +185,7 @@ class ZfBlank_Tree
         $removed = false;
 
         foreach ($this->_children as $index => $child) {
-            if ($child->getId() == $key) {
+            if ($child->id == $key) {
                 unset ($this->_children[$index]);
                 $removed = true;
                 break;
@@ -220,7 +220,7 @@ class ZfBlank_Tree
         $key = $this->_nodeKey($node);
 
         foreach ($this->_children as $child) {
-            if ($child->getId() == $key) return true;
+            if ($child->id == $key) return true;
         }
 
         return false;
@@ -234,7 +234,7 @@ class ZfBlank_Tree
         if (!$this->_parent) return null;
         
         $nodes = $this->_parent->childNodes ();
-        $offset = $this->getOffset() + $off;
+        $offset = $this->offset + $off;
 
         if (isset ($nodes[$offset])) {
             return $nodes[$offset];
@@ -280,17 +280,17 @@ class ZfBlank_Tree
             $parentIdx = array ();
 
             foreach ($rows as $row) {
-                $parentIdx[$row->getId()] = $row->getParent();
+                $parentIdx[$row->id] = $row->parent;
             }
 
             unset ($rows);
         }
 
-        if (!count (array_keys ($parentIdx, $this->getId())))
+        if (!count (array_keys ($parentIdx, $this->id)))
             return $this;
 
         $table = $this->getTable();
-        $id = $this->getId();
+        $id = $this->id;
         $field = $this->columnName('parent');
         $expr = $id === null ? "$field IS NULL" : array ("$field = ?" => $id);
         $children = $table->fetchAll($expr, $this->columnName('offset'));
@@ -313,7 +313,7 @@ class ZfBlank_Tree
     public function loadChildren ()
     {
         $table = $this->getTable();
-        $id = $this->getId();
+        $id = $this->id;
         $field = $this->columnName('parent');
         $expr = $id === null ? "$field IS NULL" : array ("$field = ?" => $id);
         $children = $table->fetchAll($expr, $this->columnName('offset'));

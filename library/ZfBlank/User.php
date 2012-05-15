@@ -68,7 +68,7 @@ class ZfBlank_User extends ZfBlank_ActiveRow_Abstract
         $select = $db->select()
                 ->from($table->info('name'), array('num' => 'COUNT(*)'))
                 ->where($this->columnName('username') . ' = ?',
-                     $this->getUsername()
+                     $this->username
                 );
 
         if ($db->fetchOne($select) != 0) return false;
@@ -98,8 +98,8 @@ class ZfBlank_User extends ZfBlank_ActiveRow_Abstract
             $this->_credentialTreatment
         );
 
-        $adapter->setIdentity($this->getUsername());
-        $adapter->setCredential($this->getPassword());
+        $adapter->setIdentity($this->username);
+        $adapter->setCredential($this->password);
         $authResult = Zend_Auth::getInstance()->authenticate($adapter);
 
         return $authResult->isValid();

@@ -101,7 +101,7 @@ class ZfBlank_Tree_Iterator_Recursive implements RecursiveIterator
     */
     public function key ()
     {
-        return $this->_current->getId();
+        return $this->_current->id;
     }
 
     /**
