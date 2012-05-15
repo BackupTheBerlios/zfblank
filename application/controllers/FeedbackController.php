@@ -51,10 +51,13 @@ class FeedbackController extends Zend_Controller_Action
                 . $msg->getMessage() . "\n";
             $mail->setBodyText($mailText);
             //$mail->send();
+            $this->_redirect('/feedback/confirm');
 
         }
 
         $this->view->form = $msg->form();
 
     }
+
+    public function confirmAction () {}
 }
