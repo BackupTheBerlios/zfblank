@@ -98,7 +98,7 @@ class ZfBlank_SiteMenu extends Zend_Navigation_Page_Uri
     \param Zend_Navigation_Container $parent the parent
     \return void
     */
-    public function setParent (Zend_Navigation_Container $parent) {
+    public function setParent (Zend_Navigation_Container $parent = NULL) {
         parent::setParent($parent);
         $this->setMenuDepth($parent->getMenuDepth() + 1);
     }

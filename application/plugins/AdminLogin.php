@@ -20,7 +20,7 @@ class Application_Plugin_AdminLogin
         extends Zend_Controller_Plugin_Abstract
 {
 
-    public function preDispatch($request) {
+    public function preDispatch(Zend_Controller_Request_Abstract $request) {
         if ($request->getModuleName() == 'admin' && !(
                 $request->getControllerName() == 'index' &&
                 $request->getActionName() == 'login')) {

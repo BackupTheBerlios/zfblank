@@ -86,7 +86,7 @@ abstract class ZfBlank_ActiveRow_Abstract extends
     }
 
     /** \zfb_read ActiveRow_Abstract..__call */
-    public function __call ($name, $arguments)
+    public function __call ($name, array $arguments)
     {
         try {
             parent::__call($name, $arguments);
