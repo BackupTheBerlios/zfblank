@@ -5,7 +5,7 @@
 
     \section LICENSE
 
-    Copyright (C) 2011,2012  Serge V. Baumer
+    Copyright (C) 2011-2013  Serge V. Baumer
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
