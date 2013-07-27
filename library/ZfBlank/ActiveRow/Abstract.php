@@ -65,9 +65,6 @@ abstract class ZfBlank_ActiveRow_Abstract extends
                 $table = $this->_getTableFromString($this->_tableClass);
             }
 
-            //echo get_class($this) . "\n";
-            //var_dump($config);
-            //var_dump($this->_data);
             $cols = $table->info('cols');
             $result = array();
             
@@ -303,7 +300,7 @@ abstract class ZfBlank_ActiveRow_Abstract extends
 
     /** \brief Get current data map.
 
-    Format of returned array is specified \ref datamap "here".
+    Returned array is described \ref datamap "here".
     \return array: data map */
     public function dataMap () {
         return $this->_dataMap;
@@ -331,7 +328,7 @@ abstract class ZfBlank_ActiveRow_Abstract extends
 
     /** \brief Get field name corresponding to a column name
     \param string $name column name \see \ref datamap "Data Map"
-    \return string: field name or **null** if there's no field for this column*/
+    \return string: field name or __null__ if there's no field for this column*/
     public function fieldName ($name)
     {
         $field = array_search($name, $this->_dataMap);
@@ -388,12 +385,12 @@ abstract class ZfBlank_ActiveRow_Abstract extends
 
     /** \brief Set form for further interaction with, or get current form.
 
-    If called with argument given, set form for further interaction with.
+    If called with argument given, set form for further interaction with it.
 
     \param ZfBlank_Form $form (optional)
     \see validateForm()
     \see setFromForm()
-    \return ZfBlank_Form: previous (current) form object or **null** */
+    \return ZfBlank_Form: previous (current) form object or __null__ */
     public function form (ZfBlank_Form $form = null) {
         $oldForm = $this->_form;
 

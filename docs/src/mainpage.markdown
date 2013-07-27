@@ -15,6 +15,11 @@ access and manipulation methods.
 So, the model classes are more focused on providing the functionality specific
 to the model rather than defining the complete set of data.
 
+\subsection Zend Framework Version
+
+This package is meant to be used with Zend Framework 1. Migration to ZF2 is a
+future work.
+
 \subsection Concepts
 
 Functionality of the package and the majority of models in it is based on tandem

@@ -2,9 +2,10 @@
 
     This class is designed to work in connection with
     ZfBlank_ActiveRow_Abstract class descendants in the role of it's row class.
-    With this collaboration
-    it provides, in addition to inherited from `Zend_Db_Table_Abstract`
-    functionality, find methods for every \ref datamap "field" in data model.
+    With this sort of collaboration
+    it provides (in addition to the functionality inherited from
+    `Zend_Db_Table_Abstract`) find methods for every \ref datamap "field"
+    in data model.
 
     \anchor findfor
 
