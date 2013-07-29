@@ -4,22 +4,27 @@
     ZfBlank_ActiveRow_Abstract class descendants in the role of it's row class.
     With this sort of collaboration
     it provides (in addition to the functionality inherited from
-    `Zend_Db_Table_Abstract`) find methods for every \ref datamap "field"
-    in data model.
+    `Zend_Db_Table_Abstract`) find and count methods for every 
+    ref datamap "field" in data model.
+
+    Default row class is set to ZfBlank_ActiveRow.
 
     \anchor findfor
 
-    ### Find Methods ###
+    ### Find and Count Methods ###
 
-    This class provides "find" method calls
-    for every field name in associated row class. Row class should extend 
-    ZfBlank_ActiveRow_Abstract. Find methods act like proxies to
-    findFor() method. The find method definition is as follows:
+    This class provides "find" and "count" method calls
+    for every field in associated row class (that extends
+    ZfBlank_ActiveRow_Abstract). Find and count methods act like proxies to
+    findFor() and countFor() methods respectively. Their definitions are as
+    follows:
 
         findFor<Field>($value)
+        countFor<Field>($value)
 
-    Note that field name is uppercased. For example, for field `"name"`,
-    the method will be `findForName($value)`. And this method call 
-    will be transformed to `findFor('name', $value)`, and the result of
-    findFor() will be returned.
+    with field name's first letter uppercased.
+
+    For example, the find method for a field named `"address"` is
+    `findForAddress($value)`. And this method call will be transformed to
+    `findFor('address', $value)`, whose result will be returned.
 

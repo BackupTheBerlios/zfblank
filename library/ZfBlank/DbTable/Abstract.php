@@ -31,6 +31,8 @@
 abstract class ZfBlank_DbTable_Abstract extends Zend_Db_Table_Abstract
 {
 
+    protected $_rowClass = 'ZfBlank_ActiveRow';
+
     /** \var ZfBlank_ActiveRow_Abstract $_infoRow
     \brief Empty row object used for reference */
     protected $_infoRow = null;
@@ -51,12 +53,15 @@ abstract class ZfBlank_DbTable_Abstract extends Zend_Db_Table_Abstract
 
     /** \zfb_read DbTable_Abstract..__call */
     public function __call ($name, $arguments) {
-        if (substr_compare($name, 'findFor', 0, 7) !== 0)
+        if (substr_compare($name, 'findFor', 0, 7) == 0) {
+            $var = strtolower(substr($name, 7, 1)) . substr($name, 8);
+            return $this->findFor($var, $arguments[0]);
+        } else if (substr_compare($name, 'countFor', 0, 8) == 0) {
+            $var = strtolower(substr($name, 8, 1)) . substr($name, 9);
+            return $this->countFor($var, $arguments[0]);
+        } else {
             throw new Zend_Db_Table_Exception ("Method doesn't exist.");
-            
-        $var = strtolower(substr($name, 7, 1)) . substr($name, 8);
-
-        return $this->findFor($var, $arguments[0]);
+        }
     }
 
     /** \brief Lazy load.
@@ -87,6 +92,30 @@ abstract class ZfBlank_DbTable_Abstract extends Zend_Db_Table_Abstract
 
         return $this->fetchAll($expr);
     }
+
+    /** \brief Count rows where а given field has given value.
+    \zfb_read DbTable_Abstract..countFor */
+    public function countFor ($field, $value)
+    {
+    	$fields = $this->_infoRow()->dataMap();
+
+	    if (!array_key_exists($field, $fields))
+            throw new Zend_Db_Table_Exception ("Field does not exist: $field.");
+	
+	    $column = $fields[$field];
+	
+	    $select = $this->select()
+                       ->from($this->_name, array('cnt' => 'COUNT(*)'));
+
+        if ( $value === null ) {
+            $select->where("$column IS NULL"); 
+        } else {
+            $select->where("$column = ?", $value);
+        }
+	
+        return $this->fetchRow($select)->cnt;
+    }
+
 
     /** \brief Get column name from field name.
     \zfb_read DbTable_Abstract..columnName */
