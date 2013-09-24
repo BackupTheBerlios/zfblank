@@ -150,6 +150,30 @@ class ZfBlank_DbTable_Items extends ZfBlank_DbTable_Tree
         return $table;
     }
 
+    /** \brief Get category id for name given.
+    \param string $name category name
+    \note Categories table must be defined before use of this function.
+    \return integer: category id */
+    public function categoryIdFromName ($name)
+    {
+        $table = $this->_lazyLoad($this->_categoriesTable);
+        $rows = $table->findFor('name', $name);
+
+        return count($rows) ? $rows->getRow(0)->getId() : null;
+    }
+
+    /** \brief Get category name for id given.
+    \param integer $id category id
+    \note Categories table must be defined before use of this function.
+    \return string: category name */
+    public function categoryNameFromId ($id)
+    {
+        $table = $this->_lazyLoad($this->_categoriesTable);
+        $rows = $table->findFor('id', $id);
+
+        return count($rows) ? $rows->getRow(0)->getName() : null;
+    }
+
     /** \brief Set or get instance of associated tags table.
     \param string|ZfBlank_DbTable_Abstract $table new table or table class name
     \return ZfBlank_DbTable: current or previous table */
