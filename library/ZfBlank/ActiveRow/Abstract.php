@@ -63,6 +63,9 @@ abstract class ZfBlank_ActiveRow_Abstract extends
                 $table = $config['table'];
             } elseif ($this->_tableClass !== null) {
                 $table = $this->_getTableFromString($this->_tableClass);
+            } else { //table is undefined: not completing dataMap
+                parent::__construct($config);
+                return;
             }
 
             $cols = $table->info('cols');
